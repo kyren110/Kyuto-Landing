@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Kyuto</title>
 
     <style>
@@ -16,34 +17,86 @@
 
         body {
             margin: 0;
-            background: #f5f5f7;
             color: #1d1d1f;
             font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
                 "SF Pro Text", "Segoe UI", sans-serif;
+
+            background:
+                radial-gradient(circle at 10% 15%, rgba(255, 110, 190, .35), transparent 30%),
+                radial-gradient(circle at 90% 10%, rgba(120, 150, 255, .35), transparent 32%),
+                radial-gradient(circle at 80% 70%, rgba(120, 255, 220, .3), transparent 30%),
+                radial-gradient(circle at 20% 90%, rgba(180, 120, 255, .3), transparent 32%),
+                #f5f5f7;
+
+            background-size: 140% 140%;
+            animation: intelligenceGlow 22s ease-in-out infinite alternate;
         }
 
+        /* Navigation */
+
+        nav {
+            position: fixed;
+            z-index: 100;
+            top: 18px;
+            left: 50%;
+            transform: translateX(-50%);
+
+            width: calc(100% - 36px);
+            max-width: 900px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 12px 18px;
+
+            border: 1px solid rgba(255, 255, 255, .75);
+            border-radius: 999px;
+
+            background: rgba(255, 255, 255, .45);
+
+            backdrop-filter: blur(25px) saturate(150%);
+            -webkit-backdrop-filter: blur(25px) saturate(150%);
+
+            box-shadow:
+                0 10px 35px rgba(0, 0, 0, .08),
+                inset 0 1px 1px rgba(255, 255, 255, .9);
+        }
+
+        .nav-name {
+            font-weight: 700;
+            text-decoration: none;
+            color: #1d1d1f;
+        }
+
+        nav a {
+            color: #555;
+            text-decoration: none;
+            font-size: 14px;
+            margin-left: 18px;
+            transition: color .2s ease;
+        }
+
+        nav a:hover {
+            color: #000;
+        }
+
+        /* Hero */
+
         .hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 40px 24px;
+            min-height: 100vh;
 
-    background:
-        radial-gradient(circle at 15% 20%, rgba(255, 110, 190, 0.45), transparent 32%),
-        radial-gradient(circle at 85% 15%, rgba(120, 150, 255, 0.45), transparent 35%),
-        radial-gradient(circle at 80% 80%, rgba(120, 255, 220, 0.4), transparent 32%),
-        radial-gradient(circle at 25% 85%, rgba(180, 120, 255, 0.35), transparent 35%),
-        #f5f5f7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-    background-size: 140% 140%;
-    animation: intelligenceGlow 18s ease-in-out infinite alternate;
-}
+            text-align: center;
+            padding: 100px 24px 60px;
+        }
 
         .content {
             max-width: 850px;
-            animation: appear 0.8s ease-out;
+            animation: appear .8s ease-out;
         }
 
         .eyebrow {
@@ -54,26 +107,33 @@
 
         h1 {
             margin: 0;
+
             font-size: clamp(65px, 13vw, 150px);
             line-height: .9;
+
             letter-spacing: -7px;
             font-weight: 700;
         }
 
         .gradient {
             background: linear-gradient(90deg, #111, #777, #111);
+
             -webkit-background-clip: text;
             background-clip: text;
+
             color: transparent;
         }
 
         .intro {
             max-width: 700px;
+
             margin: 35px auto 0;
+
             font-size: clamp(20px, 3vw, 28px);
             line-height: 1.35;
+
             color: #6e6e73;
-            letter-spacing: -0.5px;
+            letter-spacing: -.5px;
         }
 
         .intro strong {
@@ -82,6 +142,7 @@
 
         .buttons {
             margin-top: 40px;
+
             display: flex;
             justify-content: center;
             gap: 12px;
@@ -90,42 +151,56 @@
 
         .button {
             padding: 13px 21px;
+
             border-radius: 999px;
-            background: rgba(29, 29, 31, 0.9);
+
+            background: rgba(29, 29, 31, .9);
             color: white;
+
             text-decoration: none;
             font-size: 15px;
-            transition: transform .25s ease, box-shadow .25s ease;
+
+            transition:
+                transform .25s ease,
+                box-shadow .25s ease;
         }
 
         .button:hover {
             transform: scale(1.04);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, .15);
+
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, .15);
         }
 
         .button.secondary {
-            background: rgba(255, 255, 255, 0.45);
             color: #1d1d1f;
-            border: 1px solid rgba(255, 255, 255, 0.8);
+
+            background: rgba(255, 255, 255, .45);
+
+            border: 1px solid rgba(255, 255, 255, .8);
 
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
 
             box-shadow:
-                inset 0 1px 1px rgba(255, 255, 255, 0.8),
-                0 8px 25px rgba(0, 0, 0, 0.05);
+                inset 0 1px 1px rgba(255, 255, 255, .8),
+                0 8px 25px rgba(0, 0, 0, .05);
         }
+
+        /* Sections */
 
         .section {
             max-width: 1000px;
             margin: auto;
-            padding: 120px 24px;
+
+            padding: 110px 24px;
         }
 
         .section h2 {
-            font-size: 48px;
-            letter-spacing: -2px;
             margin: 0 0 35px;
+
+            font-size: clamp(38px, 6vw, 55px);
+            letter-spacing: -2px;
         }
 
         .card {
@@ -133,46 +208,192 @@
             overflow: hidden;
 
             padding: 35px;
+
             border-radius: 30px;
 
-            background: rgba(255, 255, 255, 0.45);
-            border: 1px solid rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, .42);
+
+            border: 1px solid rgba(255, 255, 255, .85);
 
             box-shadow:
-                0 20px 60px rgba(0, 0, 0, 0.08),
-                inset 0 1px 1px rgba(255, 255, 255, 0.95);
+                0 20px 60px rgba(0, 0, 0, .08),
+                inset 0 1px 1px rgba(255, 255, 255, .95);
 
             backdrop-filter: blur(30px) saturate(140%);
             -webkit-backdrop-filter: blur(30px) saturate(140%);
+
+            transition:
+                transform .3s ease,
+                box-shadow .3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+
+            box-shadow:
+                0 28px 70px rgba(0, 0, 0, .1),
+                inset 0 1px 1px rgba(255, 255, 255, 1);
         }
 
         .card::before {
             content: "";
+
             position: absolute;
+
             width: 250px;
             height: 250px;
+
             top: -150px;
             right: -80px;
-            background: rgba(255, 255, 255, 0.55);
+
+            background: rgba(255, 255, 255, .55);
+
             border-radius: 50%;
+
             filter: blur(40px);
+
             pointer-events: none;
         }
 
         .card p {
             position: relative;
+
             color: #6e6e73;
+
             font-size: 18px;
             line-height: 1.6;
+
             margin: 8px 0;
         }
 
+        /* Interest tiles */
+
+        .tiles {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 14px;
+
+            margin-top: 20px;
+        }
+
+        .tile {
+            padding: 25px 20px;
+
+            text-align: center;
+
+            border-radius: 24px;
+
+            background: rgba(255, 255, 255, .38);
+
+            border: 1px solid rgba(255, 255, 255, .8);
+
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+
+            box-shadow:
+                0 12px 35px rgba(0, 0, 0, .05),
+                inset 0 1px 1px rgba(255, 255, 255, .9);
+
+            transition:
+                transform .25s ease,
+                background .25s ease;
+        }
+
+        .tile:hover {
+            transform: translateY(-6px);
+            background: rgba(255, 255, 255, .55);
+        }
+
+        .tile-icon {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .tile-title {
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        /* Projects */
+
+        .projects {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 18px;
+        }
+
+        .project {
+            min-height: 220px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            text-decoration: none;
+            color: #1d1d1f;
+
+            padding: 30px;
+
+            border-radius: 28px;
+
+            background: rgba(255, 255, 255, .42);
+
+            border: 1px solid rgba(255, 255, 255, .85);
+
+            backdrop-filter: blur(30px) saturate(140%);
+            -webkit-backdrop-filter: blur(30px) saturate(140%);
+
+            box-shadow:
+                0 18px 50px rgba(0, 0, 0, .07),
+                inset 0 1px 1px rgba(255, 255, 255, .95);
+
+            transition:
+                transform .3s ease,
+                box-shadow .3s ease;
+        }
+
+        .project:hover {
+            transform: translateY(-7px);
+
+            box-shadow:
+                0 30px 70px rgba(0, 0, 0, .11);
+        }
+
+        .project h3 {
+            margin: 0;
+
+            font-size: 25px;
+            letter-spacing: -1px;
+        }
+
+        .project p {
+            color: #6e6e73;
+            line-height: 1.5;
+        }
+
+        .project-arrow {
+            font-size: 22px;
+            align-self: flex-end;
+        }
+
+        /* Footer */
+
         footer {
             text-align: center;
-            padding: 50px 20px;
+
+            padding: 60px 20px;
+
             color: #86868b;
             font-size: 13px;
         }
+
+        /* Animations */
 
         @keyframes appear {
             from {
@@ -186,24 +407,68 @@
             }
         }
 
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation: none !important;
-                transition: none !important;
+        @keyframes intelligenceGlow {
+            0% {
+                background-position: 0% 20%;
+            }
+
+            50% {
+                background-position: 100% 80%;
+            }
+
+            100% {
+                background-position: 20% 100%;
             }
         }
 
-        @media (max-width: 600px) {
+        /* Mobile */
+
+        @media (max-width: 700px) {
+
+            nav {
+                width: calc(100% - 24px);
+                top: 12px;
+            }
+
+            nav a {
+                margin-left: 10px;
+            }
+
+            .tiles {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .projects {
+                grid-template-columns: 1fr;
+            }
+
             h1 {
                 letter-spacing: -4px;
             }
+        }
 
-            .section h2 {
-                font-size: 38px;
+        @media (max-width: 430px) {
+
+            nav a {
+                display: none;
             }
 
-            .card {
-                padding: 28px;
+            .hero {
+                padding-top: 90px;
+            }
+
+            .section {
+                padding: 80px 18px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            body {
+                animation: none !important;
+                transition: none !important;
             }
         }
     </style>
@@ -211,7 +476,19 @@
 
 <body>
 
+<nav>
+    <a class="nav-name" href="#">Kyuto</a>
+
+    <div>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="https://github.com/kyren110">GitHub</a>
+    </div>
+</nav>
+
+
 <section class="hero">
+
     <div class="content">
 
         <div class="eyebrow">
@@ -229,23 +506,30 @@
         </div>
 
         <div class="buttons">
-            <a class="button" href="https://github.com/kyren110">
+
+            <a class="button"
+               href="https://github.com/kyren110">
                 GitHub
             </a>
 
-            <a class="button secondary" href="#about">
+            <a class="button secondary"
+               href="#about">
                 About me
             </a>
+
         </div>
 
     </div>
+
 </section>
+
 
 <section class="section" id="about">
 
     <h2>A little about me.</h2>
 
     <div class="card">
+
         <p>
             I like computers, Apple products, Roblox, and building
             completely unnecessary things just because I can.
@@ -254,9 +538,78 @@
         <p>
             This website is my little corner of the internet.
         </p>
+
+    </div>
+
+
+    <div class="tiles">
+
+        <div class="tile">
+            <div class="tile-icon"></div>
+            <div class="tile-title">Apple</div>
+        </div>
+
+        <div class="tile">
+            <div class="tile-icon">⌨</div>
+            <div class="tile-title">Computers</div>
+        </div>
+
+        <div class="tile">
+            <div class="tile-icon">◈</div>
+            <div class="tile-title">Roblox</div>
+        </div>
+
+        <div class="tile">
+            <div class="tile-icon">♡</div>
+            <div class="tile-title">Furry stuff</div>
+        </div>
+
     </div>
 
 </section>
+
+
+<section class="section" id="projects">
+
+    <h2>Things I've made.</h2>
+
+    <div class="projects">
+
+        <a class="project" href="https://github.com/kyren110/Kyuto-Landing">
+
+            <div>
+                <h3>Kyuto Landing</h3>
+
+                <p>
+                    The website you're currently looking at.
+                    Built from scratch with HTML and CSS.
+                </p>
+            </div>
+
+            <div class="project-arrow">↗</div>
+
+        </a>
+
+
+        <a class="project" href="https://github.com/kyren110">
+
+            <div>
+                <h3>More coming...</h3>
+
+                <p>
+                    Probably something unnecessary.
+                    Probably made at 2 AM.
+                </p>
+            </div>
+
+            <div class="project-arrow">↗</div>
+
+        </a>
+
+    </div>
+
+</section>
+
 
 <footer>
     made by kyuto · probably on a Mac
