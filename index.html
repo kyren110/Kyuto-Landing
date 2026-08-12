@@ -3,144 +3,213 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Kyuto :3</title>
+    <title>Kyuto</title>
 
     <style>
         * {
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             margin: 0;
-            min-height: 100vh;
-            background: #0d0d0f;
-            color: #f5f5f7;
+            background: #f5f5f7;
+            color: #1d1d1f;
             font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
-                "Segoe UI", sans-serif;
+                "SF Pro Text", "Segoe UI", sans-serif;
         }
 
-        .page {
-            max-width: 900px;
-            margin: auto;
-            padding: 80px 25px;
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 24px;
+            background:
+                radial-gradient(circle at 50% 20%, #ffffff 0%, #f5f5f7 55%);
         }
 
-        .top {
-            color: #777;
-            font-size: 14px;
-            margin-bottom: 80px;
+        .content {
+            max-width: 850px;
+            animation: appear 0.8s ease-out;
+        }
+
+        .eyebrow {
+            font-size: 15px;
+            color: #6e6e73;
+            margin-bottom: 25px;
         }
 
         h1 {
-            font-size: clamp(60px, 12vw, 120px);
-            letter-spacing: -6px;
             margin: 0;
-            line-height: 0.9;
+            font-size: clamp(65px, 13vw, 150px);
+            line-height: .9;
+            letter-spacing: -7px;
+            font-weight: 700;
+        }
+
+        .gradient {
+            background: linear-gradient(90deg, #111, #777, #111);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
         .intro {
-            max-width: 650px;
-            margin-top: 30px;
-            font-size: 25px;
-            line-height: 1.45;
-            color: #b5b5ba;
+            max-width: 700px;
+            margin: 35px auto 0;
+            font-size: clamp(20px, 3vw, 28px);
+            line-height: 1.35;
+            color: #6e6e73;
+            letter-spacing: -0.5px;
         }
 
         .intro strong {
-            color: white;
+            color: #1d1d1f;
         }
 
-        .box {
-            margin-top: 70px;
-            padding: 28px;
-            border: 1px solid #29292d;
-            border-radius: 20px;
-            background: #111113;
-        }
-
-        .box h2 {
-            margin-top: 0;
-            font-size: 18px;
-        }
-
-        .box p {
-            color: #999;
-            line-height: 1.6;
-        }
-
-        .links {
+        .buttons {
+            margin-top: 40px;
             display: flex;
-            gap: 10px;
+            justify-content: center;
+            gap: 12px;
             flex-wrap: wrap;
-            margin-top: 35px;
         }
 
-        .links a {
+        .button {
+            padding: 13px 21px;
+            border-radius: 999px;
+            background: #1d1d1f;
             color: white;
             text-decoration: none;
-            padding: 10px 16px;
-            border: 1px solid #303034;
-            border-radius: 999px;
-            transition: 0.2s;
+            font-size: 15px;
+            transition: transform .25s ease, box-shadow .25s ease;
         }
 
-        .links a:hover {
-            background: white;
-            color: black;
+        .button:hover {
+            transform: scale(1.04);
+            box-shadow: 0 8px 25px rgba(0,0,0,.15);
+        }
+
+        .button.secondary {
+            background: rgba(255,255,255,.7);
+            color: #1d1d1f;
+            border: 1px solid #d2d2d7;
+            backdrop-filter: blur(20px);
+        }
+
+        .section {
+            max-width: 1000px;
+            margin: auto;
+            padding: 120px 24px;
+        }
+
+        .section h2 {
+            font-size: 48px;
+            letter-spacing: -2px;
+            margin: 0 0 35px;
+        }
+
+        .card {
+            padding: 35px;
+            border-radius: 28px;
+            background: rgba(255,255,255,.75);
+            border: 1px solid rgba(0,0,0,.07);
+            box-shadow: 0 20px 60px rgba(0,0,0,.06);
+            backdrop-filter: blur(25px);
+        }
+
+        .card p {
+            color: #6e6e73;
+            font-size: 18px;
+            line-height: 1.6;
+            margin: 8px 0;
         }
 
         footer {
-            margin-top: 100px;
-            color: #555;
+            text-align: center;
+            padding: 50px 20px;
+            color: #86868b;
             font-size: 13px;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
         }
     </style>
 </head>
 
 <body>
 
-<div class="page">
+<section class="hero">
+    <div class="content">
 
-    <div class="top">
-        kyuto.xyz / hello :)
+        <div class="eyebrow">
+            kyuto.xyz · hello :)
+        </div>
+
+        <h1>
+            <span class="gradient">hey, i'm kyuto.</span>
+        </h1>
+
+        <div class="intro">
+            A <strong>gay furry femboy</strong> with an unhealthy
+            obsession with Apple, computers, and making random things
+            on the internet.
+        </div>
+
+        <div class="buttons">
+            <a class="button" href="https://github.com/kyren110">
+                GitHub
+            </a>
+
+            <a class="button secondary" href="#about">
+                About me
+            </a>
+        </div>
+
     </div>
+</section>
 
-    <h1>hey, i'm kyuto.</h1>
+<section class="section" id="about">
 
-    <div class="intro">
-        I'm a <strong>gay furry femboy</strong> who spends
-        probably too much time messing with computers and
-        being unnecessarily obsessed with Apple products.
-    </div>
+    <h2>A little about me.</h2>
 
-    <div class="box">
-        <h2>What am I doing here?</h2>
-
+    <div class="card">
         <p>
-            Honestly, I'm not entirely sure yet.
-            I make random projects, play Roblox,
-            break things, fix them, and occasionally
-            make something I'm actually proud of.
+            I like computers, Apple products, Roblox, and building
+            completely unnecessary things just because I can.
         </p>
 
         <p>
-            This website is basically my little corner
-            of the internet.
+            This website is my little corner of the internet.
         </p>
     </div>
 
-    <div class="links">
-        <a href="https://github.com/kyren110">GitHub</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-    </div>
+</section>
 
-    <footer>
-        made by kyuto · probably on a Mac
-    </footer>
-
-</div>
+<footer>
+    made by kyuto · probably on a Mac
+</footer>
 
 </body>
 </html>
