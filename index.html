@@ -20,9 +20,7 @@
     --muted: #918a9d;
     --subtle: #676171;
     --purple: #a970ff;
-    --purple-soft: rgba(169,112,255,.16);
     --border: rgba(255,255,255,.095);
-    --glass: rgba(20,15,29,.56);
 
     --mx: 50vw;
     --my: 50vh;
@@ -67,8 +65,6 @@ body {
         var(--bg);
 }
 
-/* Cursor atmosphere */
-
 body::before {
     content: "";
     position: fixed;
@@ -82,12 +78,7 @@ body::before {
             rgba(155,92,255,.13),
             transparent 68%
         );
-
-    transition:
-        opacity .5s ease;
 }
-
-/* Very subtle moving light */
 
 body::after {
     content: "";
@@ -116,6 +107,7 @@ body::after {
 a {
     color: inherit;
 }
+
 
 /* NAVIGATION */
 
@@ -164,7 +156,7 @@ nav {
     align-items: center;
     gap: 9px;
 
-    color: #fff;
+    color: white;
 
     font-size: 14px;
     font-weight: 700;
@@ -176,6 +168,8 @@ nav {
 .nav-dot {
     width: 6px;
     height: 6px;
+
+    flex: 0 0 auto;
 
     border-radius: 50%;
 
@@ -211,6 +205,7 @@ nav {
     background: rgba(255,255,255,.07);
 }
 
+
 /* HERO */
 
 .hero {
@@ -223,7 +218,7 @@ nav {
     justify-content: center;
 
     padding:
-        130px 22px
+        130px 24px
         100px;
 
     text-align: center;
@@ -237,69 +232,42 @@ nav {
         heroIn .9s cubic-bezier(.2,.75,.2,1) both;
 }
 
+
 /*
-    The title gets its own wrapper so the cursor transform
-    cannot clip or distort the actual text.
+    The title is deliberately constrained by the viewport.
+    This prevents the final "y" from ever extending outside
+    the visible page.
 */
 
 .title-wrap {
-    display: block;
     width: 100%;
+    max-width: 100%;
+
+    display: flex;
+    justify-content: center;
+
+    padding: 18px 0;
 
     overflow: visible;
-
-    padding:
-        18px
-        max(0px, 2vw);
-}
-
-.eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 9px;
-
-    margin-bottom: 19px;
-
-    color: #9d96a9;
-
-    font-size: 13px;
-    letter-spacing: .1px;
-}
-
-.eyebrow-dot {
-    width: 7px;
-    height: 7px;
-
-    border-radius: 50%;
-
-    background: var(--purple);
-
-    box-shadow:
-        0 0 15px rgba(169,112,255,.75);
-
-    animation:
-        pulse 2.4s ease-in-out infinite;
 }
 
 h1 {
-    margin: 0;
+    width: fit-content;
+    max-width: 100%;
 
-    /*
-        Slightly smaller maximum size and normal white-space
-        handling prevent the title from being cut off.
-    */
+    margin: 0;
 
     font-size:
         clamp(
-            56px,
-            11.5vw,
+            48px,
+            9.5vw,
             136px
         );
 
     line-height: .94;
 
     letter-spacing:
-        clamp(-5px, -0.45vw, -2px);
+        clamp(-5px, -.45vw, -2px);
 
     font-weight: 700;
 
@@ -307,8 +275,8 @@ h1 {
 
     transform:
         translate3d(
-            calc((var(--mx) - 50vw) * .0025),
-            calc((var(--my) - 50vh) * .0025),
+            calc((var(--mx) - 50vw) * .0015),
+            calc((var(--my) - 50vh) * .0015),
             0
         );
 
@@ -321,7 +289,8 @@ h1 {
 .hero-title {
     display: inline-block;
 
-    padding: 0 4px 6px;
+    padding:
+        0 6px 7px;
 
     background:
         linear-gradient(
@@ -349,6 +318,36 @@ h1 {
         );
 }
 
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+
+    margin-bottom: 19px;
+
+    color: #9d96a9;
+
+    font-size: 13px;
+    letter-spacing: .1px;
+}
+
+.eyebrow-dot {
+    width: 7px;
+    height: 7px;
+
+    flex: 0 0 auto;
+
+    border-radius: 50%;
+
+    background: var(--purple);
+
+    box-shadow:
+        0 0 15px rgba(169,112,255,.75);
+
+    animation:
+        pulse 2.4s ease-in-out infinite;
+}
+
 .hero-description {
     max-width: 690px;
 
@@ -366,7 +365,6 @@ h1 {
         );
 
     line-height: 1.48;
-
     letter-spacing: -.45px;
 }
 
@@ -453,8 +451,6 @@ h1 {
         rgba(255,255,255,.16);
 }
 
-/* Hero bottom */
-
 .hero-bottom {
     position: absolute;
 
@@ -472,6 +468,7 @@ h1 {
         float 2.5s ease-in-out infinite;
 }
 
+
 /* DIVIDER */
 
 .divider {
@@ -488,6 +485,7 @@ h1 {
             transparent
         );
 }
+
 
 /* SECTIONS */
 
@@ -529,7 +527,6 @@ h1 {
         );
 
     line-height: 1;
-
     letter-spacing: -2.6px;
 }
 
@@ -545,6 +542,7 @@ h1 {
     font-size: 16px;
     line-height: 1.6;
 }
+
 
 /* GLASS */
 
@@ -572,6 +570,7 @@ h1 {
         blur(30px)
         saturate(135%);
 }
+
 
 /* ABOUT */
 
@@ -631,6 +630,7 @@ h1 {
     font-weight: 500;
 }
 
+
 /* INTERESTS */
 
 .interests {
@@ -688,6 +688,7 @@ h1 {
         rgba(184,137,255,.2);
 }
 
+
 /* PROJECTS */
 
 .projects {
@@ -734,7 +735,9 @@ h1 {
 
     background:
         radial-gradient(
-            430px circle at var(--px, 100%) var(--py, 0%),
+            430px circle at
+            var(--px, 100%)
+            var(--py, 0%),
             rgba(151,89,255,.14),
             transparent 48%
         );
@@ -822,6 +825,7 @@ h1 {
         rgba(165,105,255,.13);
 }
 
+
 /* FOOTER */
 
 footer {
@@ -839,6 +843,7 @@ footer {
 footer span {
     color: #777080;
 }
+
 
 /* ANIMATIONS */
 
@@ -908,6 +913,7 @@ footer span {
     }
 }
 
+
 /* TABLET */
 
 @media (max-width: 760px) {
@@ -929,12 +935,13 @@ footer span {
     h1 {
         font-size:
             clamp(
-                54px,
-                12vw,
+                52px,
+                10vw,
                 100px
             );
     }
 }
+
 
 /* MOBILE */
 
@@ -942,7 +949,6 @@ footer span {
 
     nav {
         top: 12px;
-
         width:
             calc(100% - 24px);
     }
@@ -964,23 +970,23 @@ footer span {
 
     h1 {
         /*
-            Allow wrapping only when the screen is genuinely
-            too narrow. This prevents horizontal clipping.
+            The title scales with the viewport rather than
+            being allowed to exceed it.
         */
-
-        white-space: normal;
 
         font-size:
             clamp(
-                52px,
-                15.5vw,
-                82px
+                42px,
+                13.5vw,
+                70px
             );
 
         line-height: .94;
 
         letter-spacing:
-            clamp(-4px, -.8vw, -2px);
+            -3px;
+
+        white-space: nowrap;
     }
 
     .hero-title {
@@ -990,7 +996,6 @@ footer span {
 
     .hero-description {
         margin-top: 27px;
-
         font-size: 18px;
     }
 
@@ -1016,7 +1021,6 @@ footer span {
 
     .about {
         padding: 27px;
-
         border-radius: 25px;
     }
 
@@ -1031,18 +1035,16 @@ footer span {
 
     .interest {
         min-height: 88px;
-
         border-radius: 19px;
     }
 
     .project {
         min-height: 220px;
-
         padding: 25px;
-
         border-radius: 24px;
     }
 }
+
 
 /* ACCESSIBILITY */
 
@@ -1074,7 +1076,9 @@ footer span {
     <div class="nav-links">
         <a href="#about">About</a>
         <a href="#projects">Projects</a>
-        <a href="https://github.com/kyren110">GitHub</a>
+        <a href="https://github.com/kyren110">
+            GitHub
+        </a>
     </div>
 </nav>
 
@@ -1090,9 +1094,7 @@ footer span {
 
         <div class="title-wrap">
             <h1>
-                <span class="hero-title">
-                    hey, i'm kyuto.
-                </span>
+                <span class="hero-title">hey, i'm kyuto.</span>
             </h1>
         </div>
 
@@ -1152,7 +1154,6 @@ footer span {
 
     </div>
 
-
     <div class="about glass">
 
         <p>
@@ -1168,7 +1169,6 @@ footer span {
         </p>
 
     </div>
-
 
     <div class="interests">
 
@@ -1221,7 +1221,6 @@ footer span {
 
     </div>
 
-
     <div class="projects">
 
         <a
@@ -1237,8 +1236,8 @@ footer span {
 
                 <p>
                     The website you're currently looking at.
-                    Built from scratch with HTML and CSS,
-                    because apparently that was necessary.
+                    Built from scratch with HTML, CSS,
+                    and JavaScript.
                 </p>
 
             </div>
@@ -1300,85 +1299,87 @@ footer span {
 
 
 <footer>
-    made by kyuto · <span>probably on a Mac</span>
+    made by kyuto ·
+    <span>probably on a Mac</span>
 </footer>
 
 
 <script>
 const root = document.documentElement;
 
-let targetX = window.innerWidth / 2;
-let targetY = window.innerHeight / 2;
 
-let currentX = targetX;
-let currentY = targetY;
+/* Smooth cursor atmosphere */
+
+let mouseX = window.innerWidth / 2;
+let mouseY = window.innerHeight / 2;
+
+let currentX = mouseX;
+let currentY = mouseY;
 
 document.addEventListener("pointermove", event => {
-    targetX = event.clientX;
-    targetY = event.clientY;
+    mouseX = event.clientX;
+    mouseY = event.clientY;
 });
 
+
 function animateCursor() {
-    currentX += (targetX - currentX) * 0.075;
-    currentY += (targetY - currentY) * 0.075;
 
-    root.style.setProperty("--mx", `${currentX}px`);
-    root.style.setProperty("--my", `${currentY}px`);
+    currentX +=
+        (mouseX - currentX) * 0.075;
 
-    requestAnimationFrame(animateCursor);
+    currentY +=
+        (mouseY - currentY) * 0.075;
+
+    root.style.setProperty(
+        "--mx",
+        `${currentX}px`
+    );
+
+    root.style.setProperty(
+        "--my",
+        `${currentY}px`
+    );
+
+    requestAnimationFrame(
+        animateCursor
+    );
 }
 
 animateCursor();
 
 
-/*
-    Project cards get their own cursor-following light.
-    It stays inside each card instead of affecting the
-    whole page.
-*/
+/* Project card cursor glow */
 
-document.querySelectorAll(".project").forEach(project => {
+document
+    .querySelectorAll(".project")
+    .forEach(project => {
 
-    project.addEventListener("pointermove", event => {
+        project.addEventListener(
+            "pointermove",
+            event => {
 
-        const rect = project.getBoundingClientRect();
+                const rect =
+                    project.getBoundingClientRect();
 
-        const x = event.clientX - rect.left;
-        const y = event.clientY - rect.top;
+                const x =
+                    event.clientX - rect.left;
 
-        project.style.setProperty(
-            "--px",
-            `${x}px`
+                const y =
+                    event.clientY - rect.top;
+
+                project.style.setProperty(
+                    "--px",
+                    `${x}px`
+                );
+
+                project.style.setProperty(
+                    "--py",
+                    `${y}px`
+                );
+            }
         );
 
-        project.style.setProperty(
-            "--py",
-            `${y}px`
-        );
     });
-
-});
-
-
-/*
-    Keep the hero title safely inside the viewport on
-    unusually narrow screens.
-*/
-
-function updateTitle() {
-
-    const title = document.querySelector("h1");
-
-    if (window.innerWidth <= 520) {
-        title.style.whiteSpace = "normal";
-    } else {
-        title.style.whiteSpace = "nowrap";
-    }
-}
-
-window.addEventListener("resize", updateTitle);
-
-updateTitle();
 </script>
 
 </body>
