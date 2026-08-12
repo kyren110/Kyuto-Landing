@@ -16,29 +16,20 @@
 
         body {
             margin: 0;
-            color: #1d1d1f;
+            color: #f5f5f7;
             font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
                 "SF Pro Text", "Segoe UI", sans-serif;
 
             background:
-            radial-gradient(circle at 20% 15%, rgba(255, 180, 225, .28), transparent 38%),
-            radial-gradient(circle at 80% 15%, rgba(170, 190, 255, .28), transparent 40%),
-            radial-gradient(circle at 75% 75%, rgba(170, 245, 225, .24), transparent 38%),
-            radial-gradient(circle at 20% 85%, rgba(205, 175, 255, .22), transparent 40%),
-            #f5f5f7;
+                radial-gradient(circle at 15% 10%, rgba(105, 45, 190, .38), transparent 35%),
+                radial-gradient(circle at 85% 20%, rgba(65, 25, 130, .32), transparent 38%),
+                radial-gradient(circle at 70% 85%, rgba(125, 55, 200, .25), transparent 35%),
+                radial-gradient(circle at 20% 90%, rgba(75, 35, 130, .22), transparent 40%),
+                #07050b;
 
-           @keyframes intelligenceGlow {
-             0% {
-              background-position: 10% 20%;
-              }
-
-               50% {
-                    background-position: 90% 60%;
-                                                    }
-
-                                                        100% {
-                                                                  background-position: 30% 90%;
-    }
+            background-size: 150% 150%;
+            animation: purpleGlow 25s ease-in-out infinite alternate;
+        }
 
         nav {
             position: fixed;
@@ -56,27 +47,27 @@
 
             padding: 12px 18px;
 
-            border: 1px solid rgba(255,255,255,.75);
+            border: 1px solid rgba(255,255,255,.12);
             border-radius: 999px;
 
-            background: rgba(255,255,255,.45);
+            background: rgba(20,15,28,.55);
 
-            backdrop-filter: blur(25px) saturate(150%);
-            -webkit-backdrop-filter: blur(25px) saturate(150%);
+            backdrop-filter: blur(30px) saturate(140%);
+            -webkit-backdrop-filter: blur(30px) saturate(140%);
 
             box-shadow:
-                0 10px 35px rgba(0,0,0,.08),
-                inset 0 1px 1px rgba(255,255,255,.9);
+                0 10px 40px rgba(0,0,0,.35),
+                inset 0 1px 1px rgba(255,255,255,.08);
         }
 
         .nav-name {
             font-weight: 700;
             text-decoration: none;
-            color: #1d1d1f;
+            color: #f5f5f7;
         }
 
         nav a {
-            color: #555;
+            color: #aaa3b5;
             text-decoration: none;
             font-size: 14px;
             margin-left: 18px;
@@ -84,7 +75,7 @@
         }
 
         nav a:hover {
-            color: #000;
+            color: #ffffff;
         }
 
         .hero {
@@ -103,7 +94,7 @@
 
         .eyebrow {
             font-size: 15px;
-            color: #6e6e73;
+            color: #aaa3b5;
             margin-bottom: 25px;
         }
 
@@ -116,7 +107,13 @@
         }
 
         .gradient {
-            background: linear-gradient(90deg, #111, #777, #111);
+            background: linear-gradient(
+                100deg,
+                #ffffff,
+                #c9a7ff,
+                #ffffff
+            );
+
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -127,12 +124,12 @@
             margin: 35px auto 0;
             font-size: clamp(20px, 3vw, 28px);
             line-height: 1.35;
-            color: #6e6e73;
+            color: #aaa3b5;
             letter-spacing: -.5px;
         }
 
         .intro strong {
-            color: #1d1d1f;
+            color: #f5f5f7;
         }
 
         .buttons {
@@ -146,8 +143,10 @@
         .button {
             padding: 13px 21px;
             border-radius: 999px;
-            background: rgba(29,29,31,.9);
-            color: white;
+
+            background: #f5f5f7;
+            color: #100c15;
+
             text-decoration: none;
             font-size: 15px;
 
@@ -158,20 +157,24 @@
 
         .button:hover {
             transform: scale(1.04);
-            box-shadow: 0 10px 30px rgba(0,0,0,.15);
+
+            box-shadow:
+                0 10px 35px rgba(0,0,0,.35);
         }
 
         .button.secondary {
-            color: #1d1d1f;
-            background: rgba(255,255,255,.45);
-            border: 1px solid rgba(255,255,255,.8);
+            color: #f5f5f7;
+
+            background: rgba(35,25,48,.55);
+
+            border: 1px solid rgba(255,255,255,.14);
 
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
 
             box-shadow:
-                inset 0 1px 1px rgba(255,255,255,.8),
-                0 8px 25px rgba(0,0,0,.05);
+                inset 0 1px 1px rgba(255,255,255,.08),
+                0 8px 30px rgba(0,0,0,.25);
         }
 
         .section {
@@ -184,23 +187,25 @@
             margin: 0 0 35px;
             font-size: clamp(38px, 6vw, 55px);
             letter-spacing: -2px;
+            color: #f5f5f7;
         }
 
         .card {
             position: relative;
             overflow: hidden;
+
             padding: 35px;
             border-radius: 30px;
 
-            background: rgba(255,255,255,.42);
-            border: 1px solid rgba(255,255,255,.85);
+            background: rgba(25,18,34,.52);
+            border: 1px solid rgba(255,255,255,.12);
 
             box-shadow:
-                0 20px 60px rgba(0,0,0,.08),
-                inset 0 1px 1px rgba(255,255,255,.95);
+                0 25px 70px rgba(0,0,0,.35),
+                inset 0 1px 1px rgba(255,255,255,.08);
 
-            backdrop-filter: blur(30px) saturate(140%);
-            -webkit-backdrop-filter: blur(30px) saturate(140%);
+            backdrop-filter: blur(35px) saturate(140%);
+            -webkit-backdrop-filter: blur(35px) saturate(140%);
 
             transition:
                 transform .3s ease,
@@ -209,30 +214,39 @@
 
         .card:hover {
             transform: translateY(-4px);
+
             box-shadow:
-                0 28px 70px rgba(0,0,0,.1),
-                inset 0 1px 1px rgba(255,255,255,1);
+                0 30px 80px rgba(0,0,0,.45),
+                inset 0 1px 1px rgba(255,255,255,.1);
         }
 
         .card::before {
             content: "";
+
             position: absolute;
+
             width: 250px;
             height: 250px;
+
             top: -150px;
             right: -80px;
 
-            background: rgba(255,255,255,.55);
+            background: rgba(180,130,255,.08);
+
             border-radius: 50%;
             filter: blur(40px);
+
             pointer-events: none;
         }
 
         .card p {
             position: relative;
-            color: #6e6e73;
+
+            color: #aaa3b5;
+
             font-size: 18px;
             line-height: 1.6;
+
             margin: 8px 0;
         }
 
@@ -245,23 +259,25 @@
 
         .tile {
             display: block;
+
             padding: 25px 20px;
 
             text-align: center;
             text-decoration: none;
-            color: #1d1d1f;
+
+            color: #f5f5f7;
 
             border-radius: 24px;
 
-            background: rgba(255,255,255,.38);
-            border: 1px solid rgba(255,255,255,.8);
+            background: rgba(25,18,34,.45);
+            border: 1px solid rgba(255,255,255,.11);
 
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
 
             box-shadow:
-                0 12px 35px rgba(0,0,0,.05),
-                inset 0 1px 1px rgba(255,255,255,.9);
+                0 15px 40px rgba(0,0,0,.25),
+                inset 0 1px 1px rgba(255,255,255,.07);
 
             transition:
                 transform .25s ease,
@@ -270,7 +286,7 @@
 
         .tile:hover {
             transform: translateY(-6px);
-            background: rgba(255,255,255,.55);
+            background: rgba(45,28,65,.58);
         }
 
         .tile-title {
@@ -292,20 +308,20 @@
             justify-content: space-between;
 
             text-decoration: none;
-            color: #1d1d1f;
+            color: #f5f5f7;
 
             padding: 30px;
             border-radius: 28px;
 
-            background: rgba(255,255,255,.42);
-            border: 1px solid rgba(255,255,255,.85);
+            background: rgba(25,18,34,.48);
+            border: 1px solid rgba(255,255,255,.12);
 
-            backdrop-filter: blur(30px) saturate(140%);
-            -webkit-backdrop-filter: blur(30px) saturate(140%);
+            backdrop-filter: blur(35px) saturate(140%);
+            -webkit-backdrop-filter: blur(35px) saturate(140%);
 
             box-shadow:
-                0 18px 50px rgba(0,0,0,.07),
-                inset 0 1px 1px rgba(255,255,255,.95);
+                0 20px 55px rgba(0,0,0,.3),
+                inset 0 1px 1px rgba(255,255,255,.07);
 
             transition:
                 transform .3s ease,
@@ -314,29 +330,34 @@
 
         .project:hover {
             transform: translateY(-7px);
-            box-shadow: 0 30px 70px rgba(0,0,0,.11);
+
+            box-shadow:
+                0 30px 80px rgba(0,0,0,.45);
         }
 
         .project h3 {
             margin: 0;
+
             font-size: 25px;
             letter-spacing: -1px;
         }
 
         .project p {
-            color: #6e6e73;
+            color: #aaa3b5;
             line-height: 1.5;
         }
 
         .project-arrow {
             font-size: 22px;
             align-self: flex-end;
+            color: #c9a7ff;
         }
 
         footer {
             text-align: center;
             padding: 60px 20px;
-            color: #86868b;
+
+            color: #777080;
             font-size: 13px;
         }
 
@@ -352,17 +373,17 @@
             }
         }
 
-        @keyframes intelligenceGlow {
+        @keyframes purpleGlow {
             0% {
                 background-position: 0% 20%;
             }
 
             50% {
-                background-position: 100% 80%;
+                background-position: 100% 60%;
             }
 
             100% {
-                background-position: 20% 100%;
+                background-position: 25% 100%;
             }
         }
 
@@ -460,6 +481,7 @@
     <h2>A little about me.</h2>
 
     <div class="card">
+
         <p>
             I like computers, Apple products, Roblox, and building
             completely unnecessary things just because I can.
@@ -468,6 +490,7 @@
         <p>
             This website is my little corner of the internet.
         </p>
+
     </div>
 
     <div class="tiles">
