@@ -22,6 +22,7 @@
         body {
             margin: 0;
             min-height: 100vh;
+            overflow-x: hidden;
 
             color: #f5f1ff;
 
@@ -50,8 +51,6 @@
                     transparent 60%
                 ),
                 #08050f;
-
-            overflow-x: hidden;
         }
 
         body::before {
@@ -59,16 +58,35 @@
 
             position: fixed;
             inset: 0;
+            z-index: -1;
 
             pointer-events: none;
-            z-index: -1;
+
+            background:
+                radial-gradient(
+                    650px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+                    rgba(151, 91, 255, .12),
+                    transparent 68%
+                );
+
+            transition: opacity .4s ease;
+        }
+
+        body::after {
+            content: "";
+
+            position: fixed;
+            inset: -20%;
+
+            z-index: -2;
+            pointer-events: none;
 
             background:
                 linear-gradient(
                     115deg,
-                    transparent 0%,
-                    rgba(150, 100, 255, .025) 45%,
-                    transparent 70%
+                    transparent 20%,
+                    rgba(150, 100, 255, .025) 50%,
+                    transparent 75%
                 );
 
             animation: atmosphere 18s ease-in-out infinite alternate;
@@ -133,7 +151,6 @@
             font-weight: 700;
 
             text-decoration: none;
-
             letter-spacing: -.2px;
         }
 
@@ -144,8 +161,6 @@
         }
 
         .nav-links a {
-            position: relative;
-
             padding: 7px 11px;
 
             color: #aaa3b7;
@@ -168,6 +183,8 @@
         /* Hero */
 
         .hero {
+            position: relative;
+
             min-height: 100svh;
 
             display: flex;
@@ -199,7 +216,6 @@
             color: #aaa2b9;
 
             font-size: 14px;
-            letter-spacing: .1px;
         }
 
         .status {
@@ -225,13 +241,21 @@
                 );
 
             line-height: .88;
-
             letter-spacing: -7px;
-
             font-weight: 700;
+
+            transform:
+                translate(
+                    calc((var(--mouse-x, 50vw) - 50vw) * .004),
+                    calc((var(--mouse-y, 50vh) - 50vh) * .004)
+                );
+
+            transition: transform .25s ease-out;
         }
 
         .hero-title {
+            display: inline-block;
+
             background:
                 linear-gradient(
                     105deg,
@@ -249,7 +273,13 @@
             background-size: 200% auto;
 
             animation:
-                titleShimmer 8s ease-in-out infinite;
+                titleShimmer 9s ease-in-out infinite;
+
+            filter:
+                drop-shadow(
+                    0 0 35px
+                    rgba(159,95,255,.10)
+                );
         }
 
         .hero-description {
@@ -269,7 +299,6 @@
                 );
 
             line-height: 1.42;
-
             letter-spacing: -.55px;
         }
 
@@ -345,7 +374,6 @@
 
         .button.secondary:hover {
             transform: translateY(-2px);
-
             background: rgba(255,255,255,.085);
         }
 
@@ -364,11 +392,10 @@
             font-size: 11px;
             letter-spacing: .4px;
 
-            animation:
-                float 2.5s ease-in-out infinite;
+            animation: float 2.5s ease-in-out infinite;
         }
 
-        /* General sections */
+        /* Sections */
 
         .section {
             width: min(
@@ -377,10 +404,7 @@
             );
 
             margin: 0 auto;
-
-            padding:
-                120px
-                0;
+            padding: 120px 0;
         }
 
         .section-header {
@@ -412,16 +436,13 @@
                 );
 
             line-height: 1;
-
             letter-spacing: -2.5px;
         }
 
         .section-subtitle {
             max-width: 600px;
 
-            margin:
-                16px 0
-                0;
+            margin: 16px 0 0;
 
             color: #81798c;
 
@@ -460,11 +481,9 @@
 
         .about-card {
             position: relative;
-
             overflow: hidden;
 
             padding: 36px;
-
             border-radius: 30px;
         }
 
@@ -596,7 +615,6 @@
             border-radius: 28px;
 
             color: #f4effa;
-
             text-decoration: none;
 
             overflow: hidden;
@@ -615,16 +633,16 @@
 
             background:
                 radial-gradient(
-                    circle at 100% 0%,
-                    rgba(148,88,255,.13),
+                    500px circle at
+                    var(--project-x, 100%)
+                    var(--project-y, 0%),
+                    rgba(148,88,255,.14),
                     transparent 45%
                 );
 
-            opacity: .7;
+            pointer-events: none;
 
             transition: opacity .3s ease;
-
-            pointer-events: none;
         }
 
         .project:hover {
@@ -635,10 +653,6 @@
 
             box-shadow:
                 0 30px 80px rgba(0,0,0,.4);
-        }
-
-        .project:hover::before {
-            opacity: 1;
         }
 
         .project-content {
@@ -656,9 +670,7 @@
         .project p {
             max-width: 430px;
 
-            margin:
-                13px 0
-                0;
+            margin: 13px 0 0;
 
             color: #837b8d;
 
@@ -678,7 +690,6 @@
 
         .project-tag {
             color: #746b7e;
-
             font-size: 12px;
         }
 
@@ -837,7 +848,13 @@
             }
 
             h1 {
-                font-size: clamp(58px, 17vw, 90px);
+                font-size:
+                    clamp(
+                        58px,
+                        17vw,
+                        90px
+                    );
+
                 letter-spacing: -4px;
             }
 
@@ -904,7 +921,6 @@
     </div>
 </nav>
 
-
 <section class="hero">
 
     <div class="hero-content">
@@ -915,9 +931,7 @@
         </div>
 
         <h1>
-            <span class="hero-title">
-                hey, i'm kyuto.
-            </span>
+            <span class="hero-title">hey, i'm kyuto.</span>
         </h1>
 
         <p class="hero-description">
@@ -952,14 +966,9 @@
 
 </section>
 
-
 <div class="divider"></div>
 
-
-<section
-    class="section"
-    id="about"
->
+<section class="section" id="about">
 
     <div class="section-header">
 
@@ -978,7 +987,6 @@
 
     </div>
 
-
     <div class="about-card glass">
 
         <p>
@@ -994,7 +1002,6 @@
         </p>
 
     </div>
-
 
     <div class="tiles">
 
@@ -1024,14 +1031,9 @@
 
 </section>
 
-
 <div class="divider"></div>
 
-
-<section
-    class="section"
-    id="projects"
->
+<section class="section" id="projects">
 
     <div class="section-header">
 
@@ -1049,7 +1051,6 @@
         </p>
 
     </div>
-
 
     <div class="projects">
 
@@ -1085,7 +1086,6 @@
             </div>
 
         </a>
-
 
         <a
             class="project glass"
@@ -1124,14 +1124,45 @@
 
 </section>
 
-
 <div class="divider"></div>
-
 
 <footer>
     made by kyuto · <span>probably on a Mac</span>
 </footer>
 
+<script>
+    const root = document.documentElement;
+
+    let targetX = window.innerWidth / 2;
+    let targetY = window.innerHeight / 2;
+
+    let currentX = targetX;
+    let currentY = targetY;
+
+    document.addEventListener("pointermove", (event) => {
+        targetX = event.clientX;
+        targetY = event.clientY;
+    });
+
+    function updateMouseGlow() {
+        currentX += (targetX - currentX) * 0.08;
+        currentY += (targetY - currentY) * 0.08;
+
+        root.style.setProperty(
+            "--mouse-x",
+            `${currentX}px`
+        );
+
+        root.style.setProperty(
+            "--mouse-y",
+            `${currentY}px`
+        );
+
+        requestAnimationFrame(updateMouseGlow);
+    }
+
+    updateMouseGlow();
+</script>
 
 </body>
 </html>
