@@ -19,19 +19,15 @@
 :root {
     --bg: #000;
     --surface: rgba(28,28,30,.72);
-    --surface-solid: #1c1c1e;
-
     --text: #f5f5f7;
     --secondary: #a1a1a6;
     --tertiary: #6e6e73;
-
     --blue: #2997ff;
     --line: rgba(255,255,255,.12);
 
     --mx: 50vw;
     --my: 50vh;
 
-    --ease: cubic-bezier(.2,.8,.2,1);
     --spring: cubic-bezier(.16,1,.3,1);
 }
 
@@ -43,7 +39,6 @@ html {
 body {
     margin: 0;
     min-height: 100vh;
-
     overflow-x: hidden;
 
     color: var(--text);
@@ -103,8 +98,7 @@ a {
     border: 1px solid rgba(255,255,255,.13);
     border-radius: 999px;
 
-    background:
-        rgba(28,28,30,.72);
+    background: rgba(28,28,30,.72);
 
     box-shadow:
         0 16px 50px rgba(0,0,0,.35),
@@ -120,8 +114,7 @@ a {
 
     transition:
         transform .55s var(--spring),
-        opacity .4s ease,
-        width .55s var(--spring);
+        opacity .4s ease;
 }
 
 .nav.hidden {
@@ -185,7 +178,7 @@ a {
     justify-content: center;
 
     padding:
-        150px 24px
+        80px 20px
         130px;
 
     overflow: hidden;
@@ -233,22 +226,6 @@ a {
         heroReveal 1.15s var(--spring) both;
 }
 
-.hero-small {
-    margin-bottom: 30px;
-
-    color: var(--secondary);
-
-    font-size: 15px;
-    font-weight: 500;
-    letter-spacing: -.2px;
-}
-
-
-/*
-    The generous spacing here is deliberate.
-    The headline has enough room on every viewport.
-*/
-
 .hero h1 {
     width: 100%;
     max-width: 1100px;
@@ -256,11 +233,9 @@ a {
     margin: 0 auto;
 
     padding:
-        .08em
         .12em
-        .16em;
-
-    color: var(--text);
+        .12em
+        .18em;
 
     font-size:
         clamp(
@@ -269,7 +244,7 @@ a {
             132px
         );
 
-    line-height: 1.02;
+    line-height: 1.04;
 
     letter-spacing:
         clamp(
@@ -301,73 +276,55 @@ a {
     color: transparent;
 }
 
-.hero-description {
-    width: min(700px, 100%);
 
-    margin:
-        34px auto
-        0;
-
-    color: var(--secondary);
-
-    font-size:
-        clamp(
-            18px,
-            2.3vw,
-            24px
-        );
-
-    line-height: 1.5;
-    letter-spacing: -.45px;
-}
-
-.hero-description strong {
-    color: var(--text);
-    font-weight: 600;
-}
-
-.hero-note {
-    margin-top: 25px;
-
-    color: var(--tertiary);
-
-    font-size: 12px;
-}
+/* =========================================================
+   SWIPE INDICATOR
+   ========================================================= */
 
 .scroll-area {
     position: absolute;
 
     left: 50%;
-    bottom: 26px;
+    bottom: 28px;
 
     transform: translateX(-50%);
 
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 7px;
+    gap: 10px;
 
-    color: var(--tertiary);
+    color: #a1a1a6;
 
-    font-size: 11px;
+    font-size: 13px;
+    font-weight: 500;
+
+    white-space: nowrap;
 
     animation:
         scrollFloat 2.4s ease-in-out infinite;
+
+    cursor: pointer;
 }
 
 .scroll-arrow {
-    width: 24px;
-    height: 24px;
+    width: 34px;
+    height: 34px;
 
     display: grid;
     place-items: center;
 
-    border: 1px solid rgba(255,255,255,.12);
+    border: 1px solid rgba(255,255,255,.18);
     border-radius: 50%;
 
-    background: rgba(255,255,255,.055);
+    background: rgba(255,255,255,.07);
 
-    font-size: 13px;
+    color: #f5f5f7;
+
+    font-size: 17px;
+
+    box-shadow:
+        0 8px 30px rgba(0,0,0,.25);
 }
 
 
@@ -453,8 +410,7 @@ main {
 
     overflow: hidden;
 
-    border:
-        1px solid rgba(255,255,255,.11);
+    border: 1px solid rgba(255,255,255,.11);
 
     border-radius: 34px;
 
@@ -562,8 +518,7 @@ main {
 
     padding: 28px;
 
-    border:
-        1px solid rgba(255,255,255,.11);
+    border: 1px solid rgba(255,255,255,.11);
 
     border-radius: 27px;
 
@@ -758,13 +713,13 @@ footer {
 
 @keyframes scrollFloat {
     0%, 100% {
-        opacity: .45;
+        opacity: .55;
         transform: translate(-50%, 0);
     }
 
     50% {
-        opacity: .9;
-        transform: translate(-50%, 5px);
+        opacity: 1;
+        transform: translate(-50%, 7px);
     }
 }
 
@@ -819,23 +774,17 @@ footer {
         min-height: 100svh;
 
         padding:
-            120px 18px
-            100px;
-    }
-
-    .hero-small {
-        margin-bottom: 22px;
-
-        font-size: 14px;
+            80px 18px
+            105px;
     }
 
     .hero h1 {
         max-width: 100%;
 
         padding:
-            .12em
+            .13em
             .08em
-            .18em;
+            .20em;
 
         font-size:
             clamp(
@@ -844,24 +793,22 @@ footer {
                 78px
             );
 
-        line-height: 1.04;
+        line-height: 1.05;
 
         letter-spacing: -3.5px;
     }
 
-    .hero-description {
-        margin-top: 29px;
+    .scroll-area {
+        bottom: 23px;
+
+        font-size: 13px;
+    }
+
+    .scroll-arrow {
+        width: 36px;
+        height: 36px;
 
         font-size: 18px;
-        line-height: 1.5;
-    }
-
-    .hero-note {
-        margin-top: 22px;
-    }
-
-    .scroll-area {
-        bottom: 22px;
     }
 
     .section {
@@ -943,7 +890,7 @@ footer {
 
 <body>
 
-<header class="nav" id="nav">
+<header class="nav hidden" id="nav">
 
     <a class="nav-brand" href="#">
         kyuto.xyz
@@ -964,34 +911,27 @@ footer {
 </header>
 
 
-<section class="hero">
+<!-- =======================================================
+     FIRST LANDING
+     ======================================================= -->
+
+<section class="hero" id="top">
 
     <div class="hero-light"></div>
 
     <div class="hero-content">
 
-        <div class="hero-small">
-            kyuto.xyz · hello :)
-        </div>
-
         <h1>
             <span>Hey, I'm Kyuto.</span>
         </h1>
 
-        <p class="hero-description">
-            I'm a <strong>gay furry femboy</strong> who spends
-            a questionable amount of time around computers,
-            Apple stuff, Roblox, and whatever I happen to
-            become interested in next.
-        </p>
-
-        <div class="hero-note">
-            You're probably here for absolutely no reason.
-        </div>
-
     </div>
 
-    <div class="scroll-area">
+
+    <div
+        class="scroll-area"
+        onclick="document.getElementById('about').scrollIntoView({ behavior: 'smooth' })"
+    >
 
         <span>
             Swipe up to explore
@@ -1008,6 +948,10 @@ footer {
 
 <main>
 
+<!-- =======================================================
+     ABOUT
+     ======================================================= -->
+
 <section class="section" id="about">
 
     <div class="section-intro reveal">
@@ -1017,12 +961,12 @@ footer {
         </div>
 
         <h2>
-            Just Kyuto.
+            I'm just me.
         </h2>
 
         <p>
-            No résumé. No corporate biography. Just a few words
-            about the person who made this.
+            I made this website because I wanted somewhere
+            that feels like mine.
         </p>
 
     </div>
@@ -1031,22 +975,28 @@ footer {
     <div class="personal-card reveal">
 
         <p>
-            I've always been the sort of person who gets curious
-            about how things work. If something has a processor,
-            an operating system, or a screen, there's a decent
-            chance I'll eventually start messing with it.
+            I'm Kyuto. I spend a lot of my time messing around
+            with computers, trying new things, and getting curious
+            about basically anything that catches my attention.
         </p>
 
         <p>
-            I'm into <strong>Apple products</strong>, computers,
-            <strong>Roblox</strong>, technology, and making things
-            on the internet simply because I can.
+            I really like <strong>Apple products</strong>.
+            I like knowing how my Mac works, trying things I
+            probably shouldn't, and finding out what I can make
+            my devices do.
         </p>
 
         <p>
-            Most days, you'll probably find me at my desk with
-            a MacBook open and far too many things happening on
-            the screen.
+            I also spend a lot of time playing <strong>Roblox</strong>.
+            I've been playing it for years, and somehow I still
+            keep finding new things to do on it.
+        </p>
+
+        <p>
+            Most of the time, I'm probably at my desk with my
+            MacBook open, listening to something, and doing
+            something completely unnecessary.
         </p>
 
     </div>
@@ -1054,22 +1004,24 @@ footer {
 </section>
 
 
+<!-- =======================================================
+     THINGS
+     ======================================================= -->
+
 <section class="section" id="things">
 
     <div class="section-intro reveal">
 
         <div class="section-label">
-            A few things
+            A few things about me
         </div>
 
         <h2>
-            What tends to<br>
-            occupy my time.
+            Things I like.
         </h2>
 
         <p>
-            Nothing particularly complicated. Just the things
-            I keep coming back to.
+            These are some of the things I keep coming back to.
         </p>
 
     </div>
@@ -1088,8 +1040,8 @@ footer {
             </h3>
 
             <p>
-                Macs, iPhones, software, hardware,
-                and knowing far too much about Apple chips.
+                I like Macs, iPhones, Apple software,
+                and probably knowing too much about Apple chips.
             </p>
 
         </div>
@@ -1106,8 +1058,8 @@ footer {
             </h3>
 
             <p>
-                Building things, breaking things,
-                fixing them, then doing it all again.
+                I like taking things apart, trying things,
+                fixing things, and seeing what happens.
             </p>
 
         </div>
@@ -1124,8 +1076,8 @@ footer {
             </h3>
 
             <p>
-                I've been playing for years.
-                Somehow, I still haven't got bored of it.
+                I've played for years and still somehow
+                spend way too much time on it.
             </p>
 
         </div>
@@ -1135,19 +1087,28 @@ footer {
 </section>
 
 
+<!-- =======================================================
+     CLOSING
+     ======================================================= -->
+
 <section class="section end reveal">
 
     <div class="end-line"></div>
 
     <p>
-        That's about it. There isn't a bigger story hiding here.
-        It's just a website about me, made because I wanted one.
+        That's pretty much me. Nothing complicated.
+        I just wanted a little place on the internet
+        that I could call mine.
     </p>
 
 </section>
 
 </main>
 
+
+<!-- =======================================================
+     FOOTER
+     ======================================================= -->
 
 <footer>
 
@@ -1162,8 +1123,8 @@ footer {
 
 /* =========================================================
    NAVIGATION
-   Disappears after scrolling down.
-   Returns when scrolling back up.
+   The nav starts hidden so the landing screen stays clean.
+   It appears when the user starts scrolling.
    ========================================================= */
 
 const nav =
@@ -1182,7 +1143,7 @@ function updateNavigation() {
 
     if (currentScrollY <= 40) {
 
-        nav.classList.remove("hidden");
+        nav.classList.add("hidden");
 
     }
 
