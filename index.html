@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <meta name="theme-color" content="#f5f5f7">
-<meta name="description" content="Kyuto — kyuto.xyz">
+<meta name="description" content="Kyuto.xyz — a personal website by Kyuto.">
 
 <title>Kyuto — kyuto.xyz</title>
 
@@ -18,18 +18,18 @@
 
 :root {
     --bg: #f5f5f7;
-    --white: #fff;
-    --black: #1d1d1f;
+    --surface: rgba(255,255,255,.72);
+    --surface-solid: #fff;
+    --text: #1d1d1f;
     --secondary: #6e6e73;
     --tertiary: #86868b;
     --blue: #0071e3;
-
-    --glass: rgba(255,255,255,.72);
-    --border: rgba(0,0,0,.07);
+    --line: rgba(0,0,0,.075);
 
     --mx: 50vw;
     --my: 50vh;
 
+    --ease: cubic-bezier(.2,.8,.2,1);
     --spring: cubic-bezier(.16,1,.3,1);
 }
 
@@ -43,15 +43,7 @@ body {
     min-height: 100vh;
     overflow-x: hidden;
 
-    color: var(--black);
-
-    background:
-        radial-gradient(
-            circle at 50% -10%,
-            rgba(255,255,255,.98),
-            transparent 42%
-        ),
-        var(--bg);
+    color: var(--text);
 
     font-family:
         -apple-system,
@@ -64,150 +56,114 @@ body {
 
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+
+    background:
+        radial-gradient(
+            ellipse 900px 600px at 50% -120px,
+            rgba(255,255,255,.98),
+            transparent 70%
+        ),
+        var(--bg);
 }
 
 ::selection {
     color: #fff;
-    background: rgba(0,113,227,.65);
+    background: var(--blue);
 }
 
 a {
     color: inherit;
 }
 
-
 /* =========================================================
-   NAVIGATION
+   TOP NAV
    ========================================================= */
 
-.nav-shell {
+.nav {
     position: fixed;
     z-index: 1000;
 
     top: 14px;
     left: 50%;
 
-    width: min(1000px, calc(100% - 28px));
-    height: 54px;
+    width: min(980px, calc(100% - 28px));
+    height: 50px;
 
     transform: translateX(-50%);
-
-    transition:
-        opacity .55s var(--spring),
-        transform .55s var(--spring);
-}
-
-.nav-shell.hidden {
-    opacity: 0;
-    transform:
-        translateX(-50%)
-        translateY(-80px);
-    pointer-events: none;
-}
-
-nav {
-    width: 100%;
-    height: 100%;
 
     display: flex;
     align-items: center;
 
-    padding: 0 9px 0 18px;
+    padding: 0 18px;
 
-    border: 1px solid rgba(255,255,255,.7);
+    border: 1px solid rgba(255,255,255,.75);
     border-radius: 999px;
 
-    background:
-        linear-gradient(
-            180deg,
-            rgba(255,255,255,.82),
-            rgba(255,255,255,.62)
-        );
+    background: rgba(255,255,255,.68);
 
     box-shadow:
-        0 10px 35px rgba(0,0,0,.07),
+        0 12px 40px rgba(0,0,0,.07),
         inset 0 1px 0 rgba(255,255,255,.95);
 
     backdrop-filter:
         saturate(180%)
-        blur(28px);
+        blur(24px);
 
     -webkit-backdrop-filter:
         saturate(180%)
-        blur(28px);
+        blur(24px);
+
+    transition:
+        transform .55s var(--spring),
+        opacity .4s ease,
+        width .55s var(--spring);
+}
+
+.nav.hidden {
+    transform: translate(-50%, -130%);
+    opacity: 0;
+    pointer-events: none;
 }
 
 .nav-brand {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    color: var(--text);
 
-    color: var(--black);
-
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 600;
-    letter-spacing: -.35px;
+    letter-spacing: -.3px;
 
     text-decoration: none;
-}
-
-.brand-dot {
-    width: 8px;
-    height: 8px;
-
-    border-radius: 50%;
-
-    background: #111;
-
-    box-shadow:
-        0 0 0 3px rgba(0,0,0,.05);
 }
 
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 3px;
+    gap: 5px;
 
     margin-left: auto;
 }
 
 .nav-links a {
-    padding: 8px 13px;
+    padding: 7px 11px;
 
     border-radius: 999px;
 
     color: #424245;
 
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 500;
 
     text-decoration: none;
 
     transition:
-        color .25s ease,
-        background .25s ease,
-        transform .25s var(--spring);
+        color .2s ease,
+        background .2s ease;
 }
 
 .nav-links a:hover {
     color: #000;
     background: rgba(0,0,0,.055);
 }
-
-.nav-github {
-    color: #fff !important;
-    background: #1d1d1f !important;
-
-    box-shadow:
-        0 3px 10px rgba(0,0,0,.16);
-}
-
-.nav-github:hover {
-    color: #fff !important;
-    background: #000 !important;
-    transform: scale(1.025);
-}
-
 
 /* =========================================================
    HERO
@@ -223,22 +179,22 @@ nav {
     justify-content: center;
 
     padding:
-        130px 24px
-        110px;
+        150px 24px
+        130px;
 
     overflow: hidden;
 
     text-align: center;
 }
 
-.hero-orb {
+.hero-light {
     position: absolute;
 
-    width: 900px;
-    height: 900px;
+    width: min(900px, 100vw);
+    height: 700px;
 
     left: 50%;
-    top: 45%;
+    top: 48%;
 
     transform:
         translate(
@@ -250,124 +206,86 @@ nav {
 
     background:
         radial-gradient(
-            circle,
-            rgba(255,255,255,.95) 0%,
-            rgba(224,226,230,.55) 28%,
-            rgba(190,195,205,.16) 48%,
+            ellipse,
+            rgba(255,255,255,.98) 0%,
+            rgba(224,226,231,.55) 35%,
             transparent 70%
         );
 
+    filter: blur(20px);
+
     pointer-events: none;
-}
-
-.hero-orb::after {
-    content: "";
-
-    position: absolute;
-    inset: 20%;
-
-    border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle at 35% 30%,
-            rgba(255,255,255,.9),
-            transparent 52%
-        );
-
-    filter: blur(40px);
 }
 
 .hero-content {
     position: relative;
     z-index: 2;
 
-    width: min(1150px, 100%);
+    width: min(1100px, 100%);
 
     animation:
-        heroIn 1.2s var(--spring) both;
+        heroReveal 1.15s var(--spring) both;
 }
 
-.hero-kicker {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-
+.hero-small {
     margin-bottom: 30px;
-    padding: 8px 14px;
-
-    border: 1px solid rgba(0,0,0,.055);
-    border-radius: 999px;
 
     color: var(--secondary);
 
-    background: rgba(255,255,255,.65);
-
-    box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.9),
-        0 8px 30px rgba(0,0,0,.035);
-
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 500;
+    letter-spacing: -.2px;
 }
 
-.status-dot {
-    width: 7px;
-    height: 7px;
-
-    border-radius: 50%;
-
-    background: #30d158;
-
-    box-shadow:
-        0 0 0 4px rgba(48,209,88,.12);
-}
+/*
+    The generous line-height, padding and max-width are intentional.
+    The headline is never allowed to collide with the viewport.
+*/
 
 .hero h1 {
-    margin: 0;
+    width: 100%;
+    max-width: 1100px;
 
-    color: var(--black);
+    margin: 0 auto;
 
-    /*
-       Important:
-       No overflow clipping here.
-       This prevents "Hey, I'm Kyuto." from being cut off.
-    */
-    overflow: visible;
+    padding:
+        .08em
+        .12em
+        .16em;
+
+    color: var(--text);
 
     font-size:
         clamp(
-            64px,
-            11vw,
-            150px
+            58px,
+            10vw,
+            132px
         );
 
-    line-height: .92;
+    line-height: 1.02;
 
     letter-spacing:
         clamp(
-            -7px,
-            -.65vw,
-            -4px
+            -6px,
+            -.55vw,
+            -3px
         );
 
     font-weight: 700;
 
-    white-space: nowrap;
+    white-space: normal;
+    overflow: visible;
 }
 
 .hero h1 span {
-    display: inline-block;
+    display: inline;
 
     background:
         linear-gradient(
             180deg,
             #090909 0%,
-            #2c2c2e 52%,
-            #6e6e73 100%
+            #303033 55%,
+            #737378 100%
         );
 
     -webkit-background-clip: text;
@@ -377,150 +295,73 @@ nav {
 }
 
 .hero-description {
-    width: min(720px, 100%);
+    width: min(700px, 100%);
 
     margin:
-        38px auto
+        34px auto
         0;
 
     color: var(--secondary);
 
     font-size:
         clamp(
-            19px,
-            2.4vw,
-            26px
+            18px,
+            2.3vw,
+            24px
         );
 
-    line-height: 1.42;
-    letter-spacing: -.55px;
+    line-height: 1.5;
+    letter-spacing: -.45px;
 }
 
 .hero-description strong {
-    color: var(--black);
+    color: var(--text);
     font-weight: 600;
 }
 
-.hero-actions {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 11px;
+.hero-note {
+    margin-top: 25px;
 
-    margin-top: 34px;
+    color: var(--tertiary);
 
-    flex-wrap: wrap;
+    font-size: 12px;
 }
 
-.button {
-    min-width: 125px;
-
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-
-    padding: 13px 20px;
-
-    border-radius: 999px;
-
-    font-size: 15px;
-    font-weight: 500;
-
-    text-decoration: none;
-
-    transition:
-        transform .4s var(--spring),
-        box-shadow .4s ease,
-        background .3s ease;
-}
-
-.button-primary {
-    color: #fff;
-
-    background: #0071e3;
-
-    box-shadow:
-        0 8px 24px rgba(0,113,227,.22);
-}
-
-.button-primary:hover {
-    transform:
-        translateY(-3px)
-        scale(1.025);
-
-    box-shadow:
-        0 14px 34px rgba(0,113,227,.28);
-}
-
-.button-secondary {
-    color: #0071e3;
-
-    background:
-        rgba(0,113,227,.075);
-}
-
-.button-secondary:hover {
-    transform: translateY(-3px);
-
-    background:
-        rgba(0,113,227,.12);
-}
-
-
-/* =========================================================
-   APPLE-STYLE SWIPE INDICATOR
-   ========================================================= */
-
-.hero-bottom {
+.scroll-area {
     position: absolute;
 
     left: 50%;
-    bottom: 27px;
+    bottom: 26px;
 
     transform: translateX(-50%);
 
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 7px;
 
-    color: #86868b;
+    color: var(--tertiary);
 
     font-size: 11px;
-    font-weight: 500;
-
-    pointer-events: none;
-}
-
-.swipe-text {
-    margin-bottom: 9px;
-}
-
-.swipe-pill {
-    width: 26px;
-    height: 42px;
-
-    display: flex;
-    justify-content: center;
-
-    padding-top: 7px;
-
-    border: 1px solid rgba(0,0,0,.17);
-    border-radius: 999px;
-}
-
-.swipe-dot {
-    width: 4px;
-    height: 9px;
-
-    border-radius: 999px;
-
-    background: #6e6e73;
 
     animation:
-        swipeDown 1.8s ease-in-out infinite;
+        scrollFloat 2.4s ease-in-out infinite;
 }
 
+.scroll-arrow {
+    width: 24px;
+    height: 24px;
+
+    display: grid;
+    place-items: center;
+
+    border: 1px solid rgba(0,0,0,.08);
+    border-radius: 50%;
+
+    background: rgba(255,255,255,.55);
+
+    font-size: 13px;
+}
 
 /* =========================================================
    MAIN
@@ -532,7 +373,7 @@ main {
 }
 
 .section {
-    width: min(1100px, calc(100% - 42px));
+    width: min(980px, calc(100% - 40px));
 
     margin: auto;
 
@@ -540,34 +381,32 @@ main {
         145px 0;
 }
 
-.section-intro {
-    margin-bottom: 55px;
-}
-
-.section-eyebrow {
+.section-label {
     margin-bottom: 14px;
 
     color: var(--secondary);
 
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 500;
 }
 
+.section-intro {
+    margin-bottom: 52px;
+}
+
 .section h2 {
-    max-width: 850px;
+    max-width: 800px;
 
     margin: 0;
-
-    color: var(--black);
 
     font-size:
         clamp(
             44px,
-            6.5vw,
-            76px
+            6vw,
+            72px
         );
 
-    line-height: .96;
+    line-height: 1;
 
     letter-spacing:
         clamp(
@@ -579,338 +418,273 @@ main {
     font-weight: 700;
 }
 
-.section-lead {
+.section-intro p {
     max-width: 650px;
 
     margin: 22px 0 0;
 
     color: var(--secondary);
 
-    font-size: 21px;
-    line-height: 1.45;
+    font-size: 20px;
+    line-height: 1.5;
 
-    letter-spacing: -.4px;
+    letter-spacing: -.35px;
 }
-
 
 /* =========================================================
    ABOUT
    ========================================================= */
 
-.about-layout {
-    display: grid;
-
-    grid-template-columns:
-        1.4fr
-        .6fr;
-
-    gap: 17px;
-}
-
-.glass-card {
+.personal-card {
     position: relative;
+
+    padding: 58px;
 
     overflow: hidden;
 
-    border: 1px solid rgba(255,255,255,.75);
-    border-radius: 32px;
+    border:
+        1px solid rgba(255,255,255,.8);
+
+    border-radius: 34px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(255,255,255,.84),
-            rgba(255,255,255,.58)
+            rgba(255,255,255,.88),
+            rgba(255,255,255,.62)
         );
 
     box-shadow:
-        0 25px 80px rgba(0,0,0,.075),
+        0 25px 80px rgba(0,0,0,.065),
         inset 0 1px 0 rgba(255,255,255,.95);
 
-    backdrop-filter:
-        saturate(150%)
-        blur(24px);
-
-    -webkit-backdrop-filter:
-        saturate(150%)
-        blur(24px);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
 }
 
-.about-main {
-    min-height: 370px;
-
-    padding: 48px;
-}
-
-.about-main::before {
+.personal-card::before {
     content: "";
 
     position: absolute;
 
-    width: 450px;
-    height: 450px;
+    width: 520px;
+    height: 520px;
 
-    right: -220px;
-    top: -250px;
+    right: -280px;
+    top: -300px;
 
     border-radius: 50%;
 
     background:
         radial-gradient(
             circle,
-            rgba(0,113,227,.13),
+            rgba(0,113,227,.10),
             transparent 68%
         );
 }
 
-.about-main::after {
+.personal-card::after {
     content: "";
 
     position: absolute;
 
-    width: 250px;
-    height: 250px;
+    width: 320px;
+    height: 320px;
 
-    left: -130px;
-    bottom: -150px;
+    left: -220px;
+    bottom: -240px;
 
     border-radius: 50%;
 
     background:
         radial-gradient(
             circle,
-            rgba(175,82,222,.10),
-            transparent 70%
+            rgba(175,82,222,.07),
+            transparent 68%
         );
 }
 
-.about-icon {
-    width: 54px;
-    height: 54px;
-
-    display: grid;
-    place-items: center;
-
-    margin-bottom: 55px;
-
-    border-radius: 17px;
-
-    color: #fff;
-
-    background:
-        linear-gradient(
-            145deg,
-            #2d2d30,
-            #000
-        );
-
-    box-shadow:
-        0 12px 28px rgba(0,0,0,.18);
-
-    font-size: 22px;
-}
-
-.about-main p {
+.personal-card p {
     position: relative;
-    z-index: 2;
+    z-index: 1;
 
-    max-width: 720px;
+    max-width: 760px;
 
     margin: 0;
 
     color: var(--secondary);
 
-    font-size: 22px;
-    line-height: 1.58;
+    font-size: 21px;
+    line-height: 1.65;
 
-    letter-spacing: -.45px;
+    letter-spacing: -.4px;
 }
 
-.about-main p + p {
-    margin-top: 20px;
+.personal-card p + p {
+    margin-top: 24px;
 }
 
-.about-main strong {
-    color: var(--black);
+.personal-card strong {
+    color: var(--text);
     font-weight: 600;
 }
 
-.about-side {
+/* =========================================================
+   SMALL DETAILS
+   ========================================================= */
+
+.details {
     display: grid;
-    gap: 17px;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 14px;
 }
 
-.mini-card {
-    min-height: 176px;
+.detail {
+    min-height: 185px;
 
-    padding: 30px;
+    display: flex;
+    flex-direction: column;
+
+    padding: 28px;
+
+    border:
+        1px solid rgba(255,255,255,.75);
+
+    border-radius: 27px;
+
+    background:
+        rgba(255,255,255,.68);
+
+    box-shadow:
+        0 16px 55px rgba(0,0,0,.045),
+        inset 0 1px 0 rgba(255,255,255,.9);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
 
     transition:
         transform .5s var(--spring),
         box-shadow .5s ease;
 }
 
-.mini-card:hover {
-    transform: translateY(-6px);
+.detail:hover {
+    transform: translateY(-7px);
 
     box-shadow:
-        0 30px 80px rgba(0,0,0,.11),
+        0 28px 70px rgba(0,0,0,.085),
         inset 0 1px 0 rgba(255,255,255,.95);
 }
 
-.mini-icon {
-    width: 43px;
-    height: 43px;
+.detail-symbol {
+    width: 42px;
+    height: 42px;
 
     display: grid;
     place-items: center;
 
-    margin-bottom: 28px;
+    margin-bottom: auto;
 
     border-radius: 13px;
 
-    color: var(--black);
+    background: rgba(0,0,0,.055);
 
-    background:
-        rgba(0,0,0,.055);
+    color: var(--text);
 
-    font-size: 18px;
+    font-size: 19px;
 }
 
-.mini-card h3 {
-    margin: 0;
+.detail h3 {
+    margin: 26px 0 0;
 
-    font-size: 21px;
-    letter-spacing: -.6px;
+    font-size: 19px;
+    letter-spacing: -.5px;
 }
 
-.mini-card p {
-    margin: 8px 0 0;
+.detail p {
+    margin: 7px 0 0;
 
     color: var(--secondary);
 
-    font-size: 14px;
-    line-height: 1.4;
+    font-size: 13px;
+    line-height: 1.45;
 }
-
 
 /* =========================================================
-   INTERESTS
+   CLOSING
    ========================================================= */
 
-.interests {
-    display: grid;
+.end {
+    padding-top: 30px;
+    padding-bottom: 150px;
 
-    grid-template-columns:
-        repeat(4, 1fr);
-
-    gap: 14px;
-
-    margin-top: 17px;
+    text-align: center;
 }
 
-.interest {
-    position: relative;
+.end-line {
+    width: 36px;
+    height: 1px;
 
-    min-height: 190px;
+    margin:
+        0 auto
+        28px;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-    padding: 26px;
-
-    overflow: hidden;
-
-    border: 1px solid rgba(255,255,255,.8);
-    border-radius: 28px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.86),
-            rgba(255,255,255,.56)
-        );
-
-    box-shadow:
-        0 18px 55px rgba(0,0,0,.055),
-        inset 0 1px 0 rgba(255,255,255,.95);
-
-    text-decoration: none;
-
-    backdrop-filter: blur(22px);
-    -webkit-backdrop-filter: blur(22px);
-
-    transition:
-        transform .55s var(--spring),
-        box-shadow .55s ease;
+    background: #c7c7cc;
 }
 
-.interest:hover {
-    transform:
-        translateY(-8px)
-        scale(1.012);
+.end p {
+    max-width: 540px;
 
-    box-shadow:
-        0 28px 75px rgba(0,0,0,.11),
-        inset 0 1px 0 rgba(255,255,255,.95);
+    margin: auto;
+
+    color: var(--secondary);
+
+    font-size: 17px;
+    line-height: 1.55;
 }
-
-.interest-icon {
-    width: 46px;
-    height: 46px;
-
-    display: grid;
-    place-items: center;
-
-    border-radius: 14px;
-
-    color: #1d1d1f;
-
-    background:
-        rgba(0,0,0,.055);
-
-    font-size: 20px;
-}
-
-.interest span {
-    font-size: 18px;
-    font-weight: 600;
-    letter-spacing: -.45px;
-}
-
 
 /* =========================================================
    FOOTER
    ========================================================= */
 
 footer {
-    width: min(1100px, calc(100% - 42px));
+    width: min(980px, calc(100% - 40px));
 
     margin: auto;
 
     padding:
-        80px 0
-        45px;
+        35px 0
+        55px;
 
-    border-top: 1px solid rgba(0,0,0,.07);
+    border-top: 1px solid var(--line);
 
     display: flex;
     justify-content: center;
     align-items: center;
 
-    color: #86868b;
+    color: var(--tertiary);
 
-    font-size: 13px;
+    font-size: 12px;
 
     text-align: center;
 }
 
-.footer-brand {
-    color: var(--black);
+.footer-main {
+    color: var(--secondary);
+}
 
+.footer-main strong {
+    color: var(--text);
     font-weight: 600;
 }
 
+.footer-main::after {
+    content: " · made on a Mac";
+
+    color: var(--tertiary);
+}
 
 /* =========================================================
    REVEALS
@@ -920,12 +694,12 @@ footer {
     opacity: 0;
 
     transform:
-        translateY(35px)
-        scale(.985);
+        translateY(30px)
+        scale(.99);
 
     transition:
-        opacity .9s var(--spring),
-        transform .9s var(--spring);
+        opacity .85s var(--spring),
+        transform .85s var(--spring);
 }
 
 .reveal.visible {
@@ -936,18 +710,17 @@ footer {
         scale(1);
 }
 
-
 /* =========================================================
    ANIMATIONS
    ========================================================= */
 
-@keyframes heroIn {
+@keyframes heroReveal {
     from {
         opacity: 0;
 
         transform:
-            translateY(35px)
-            scale(.97);
+            translateY(28px)
+            scale(.985);
     }
 
     to {
@@ -959,177 +732,162 @@ footer {
     }
 }
 
-@keyframes swipeDown {
-    0% {
-        opacity: 0;
-        transform: translateY(0);
+@keyframes scrollFloat {
+    0%, 100% {
+        opacity: .45;
+        transform: translate(-50%, 0);
     }
 
-    25% {
-        opacity: 1;
-    }
-
-    70% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 0;
-        transform: translateY(17px);
+    50% {
+        opacity: .9;
+        transform: translate(-50%, 5px);
     }
 }
-
 
 /* =========================================================
    TABLET
    ========================================================= */
 
-@media (max-width: 800px) {
+@media (max-width: 720px) {
 
-    .about-layout {
+    .details {
         grid-template-columns: 1fr;
     }
 
-    .about-side {
-        grid-template-columns: repeat(2, 1fr);
+    .detail {
+        min-height: 155px;
     }
 
-    .interests {
-        grid-template-columns: repeat(2, 1fr);
+    .personal-card {
+        padding: 42px;
     }
 }
-
 
 /* =========================================================
    MOBILE
    ========================================================= */
 
-@media (max-width: 560px) {
+@media (max-width: 520px) {
 
-    .nav-shell {
+    .nav {
         top: 9px;
 
         width:
             calc(100% - 18px);
-    }
 
-    nav {
-        padding-left: 15px;
-        padding-right: 6px;
+        height: 48px;
     }
 
     .nav-links {
-        gap: 0;
+        gap: 1px;
     }
 
     .nav-links a {
         padding:
-            8px 9px;
+            7px 8px;
 
-        font-size: 12px;
-    }
-
-    .nav-links a:first-child {
-        display: none;
-    }
-
-    .nav-github {
-        padding-left: 12px !important;
-        padding-right: 12px !important;
+        font-size: 11px;
     }
 
     .hero {
+        min-height: 100svh;
+
         padding:
-            120px 20px
-            90px;
+            120px 18px
+            100px;
+    }
+
+    .hero-small {
+        margin-bottom: 22px;
+
+        font-size: 14px;
     }
 
     .hero h1 {
-        /*
-           Allow the title to scale down naturally
-           instead of clipping it.
-        */
-        white-space: normal;
+        max-width: 100%;
+
+        padding:
+            .12em
+            .08em
+            .18em;
 
         font-size:
             clamp(
                 52px,
-                14vw,
+                15vw,
                 78px
             );
 
-        letter-spacing: -3px;
+        line-height: 1.04;
+
+        letter-spacing: -3.5px;
     }
 
     .hero-description {
-        font-size: 19px;
+        margin-top: 29px;
+
+        font-size: 18px;
+        line-height: 1.5;
+    }
+
+    .hero-note {
+        margin-top: 22px;
+    }
+
+    .scroll-area {
+        bottom: 22px;
     }
 
     .section {
         width:
-            calc(100% - 28px);
+            calc(100% - 30px);
 
         padding:
-            90px 0;
+            95px 0;
     }
 
-    .section h2 {
-        font-size: 45px;
-        letter-spacing: -2.7px;
-    }
-
-    .section-lead {
-        font-size: 18px;
-    }
-
-    .about-main {
-        min-height: auto;
-        padding: 31px;
-    }
-
-    .about-icon {
+    .section-intro {
         margin-bottom: 38px;
     }
 
-    .about-main p {
+    .section h2 {
+        font-size: 44px;
+        line-height: 1.02;
+        letter-spacing: -2.7px;
+    }
+
+    .section-intro p {
         font-size: 18px;
     }
 
-    .about-side {
-        grid-template-columns: 1fr;
+    .personal-card {
+        padding: 31px;
+
+        border-radius: 27px;
     }
 
-    .mini-card {
-        min-height: 145px;
+    .personal-card p {
+        font-size: 18px;
+        line-height: 1.62;
     }
 
-    .interests {
-        gap: 10px;
-    }
+    .detail {
+        min-height: 150px;
 
-    .interest {
-        min-height: 145px;
-        padding: 20px;
+        padding: 25px;
+
         border-radius: 23px;
-    }
-
-    .interest span {
-        font-size: 16px;
-    }
-
-    .swipe-text {
-        font-size: 10px;
     }
 
     footer {
         width:
-            calc(100% - 28px);
+            calc(100% - 30px);
 
-        padding-top: 60px;
-        padding-bottom: 35px;
+        padding:
+            30px 0
+            45px;
     }
 }
-
 
 /* =========================================================
    REDUCED MOTION
@@ -1140,9 +898,12 @@ footer {
     *,
     *::before,
     *::after {
-        scroll-behavior: auto !important;
         animation: none !important;
         transition: none !important;
+    }
+
+    html {
+        scroll-behavior: auto;
     }
 
     .reveal {
@@ -1155,58 +916,25 @@ footer {
 
 <body>
 
+<header class="nav" id="nav">
+    <a class="nav-brand" href="#">
+        kyuto.xyz
+    </a>
 
-<!-- =======================================================
-     NAVIGATION
-     ======================================================= -->
-
-<div class="nav-shell" id="navShell">
-
-    <nav>
-
-        <a class="nav-brand" href="#">
-            <span class="brand-dot"></span>
-            kyuto.xyz
-        </a>
-
-        <div class="nav-links">
-
-            <a href="#about">
-                About
-            </a>
-
-            <a href="#interests">
-                Interests
-            </a>
-
-            <a
-                class="nav-github"
-                href="https://github.com/kyren110"
-                target="_blank"
-                rel="noopener"
-            >
-                GitHub ↗
-            </a>
-
-        </div>
-
+    <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#things">A few things</a>
     </nav>
+</header>
 
-</div>
 
+<section class="hero">
 
-<!-- =======================================================
-     HERO
-     ======================================================= -->
-
-<section class="hero" id="top">
-
-    <div class="hero-orb"></div>
+    <div class="hero-light"></div>
 
     <div class="hero-content">
 
-        <div class="hero-kicker">
-            <span class="status-dot"></span>
+        <div class="hero-small">
             kyuto.xyz · hello :)
         </div>
 
@@ -1215,43 +943,24 @@ footer {
         </h1>
 
         <p class="hero-description">
-            A <strong>gay furry femboy</strong> with an unhealthy
-            obsession with Apple, computers, Roblox, and making
-            random things on the internet.
+            I'm a <strong>gay furry femboy</strong> who spends
+            a questionable amount of time around computers,
+            Apple stuff, Roblox, and whatever I happen to
+            become interested in next.
         </p>
 
-        <div class="hero-actions">
-
-            <a
-                class="button button-primary"
-                href="#about"
-            >
-                About me
-                <span>↓</span>
-            </a>
-
-            <a
-                class="button button-secondary"
-                href="#interests"
-            >
-                What I like
-            </a>
-
+        <div class="hero-note">
+            You're probably here for absolutely no reason.
         </div>
 
     </div>
 
+    <div class="scroll-area">
+        <span>Swipe up to explore</span>
 
-    <div class="hero-bottom">
-
-        <span class="swipe-text">
-            Swipe up
+        <span class="scroll-arrow">
+            ↓
         </span>
-
-        <div class="swipe-pill">
-            <div class="swipe-dot"></div>
-        </div>
-
     </div>
 
 </section>
@@ -1259,174 +968,125 @@ footer {
 
 <main>
 
-
-<!-- =======================================================
-     ABOUT
-     ======================================================= -->
-
 <section class="section" id="about">
 
     <div class="section-intro reveal">
 
-        <div class="section-eyebrow">
-            About
+        <div class="section-label">
+            About me
         </div>
 
         <h2>
-            The person behind<br>
-            the pixels.
+            Just Kyuto.
         </h2>
 
-        <p class="section-lead">
-            I'm Kyuto. I spend a slightly unreasonable amount
-            of time around computers, Apple stuff, and the internet.
+        <p>
+            No résumé. No corporate biography. Just a few words
+            about the person who made this.
         </p>
 
     </div>
 
 
-    <div class="about-layout">
+    <div class="personal-card reveal">
 
-        <div class="glass-card about-main reveal">
+        <p>
+            I've always been the sort of person who gets curious
+            about how things work. If something has a processor,
+            an operating system, or a screen, there's a decent
+            chance I'll eventually start messing with it.
+        </p>
 
-            <div class="about-icon">
-                ✦
-            </div>
+        <p>
+            I'm into <strong>Apple products</strong>, computers,
+            <strong>Roblox</strong>, technology, and making things
+            on the internet simply because I can.
+        </p>
 
-            <p>
-                I like <strong>computers, Apple products, Roblox</strong>,
-                and building things purely because I want to see
-                if I can make them work.
-            </p>
-
-            <p>
-                Most of the time, if I'm doing something,
-                there's probably a Mac somewhere nearby.
-            </p>
-
-        </div>
-
-
-        <div class="about-side">
-
-            <div class="glass-card mini-card reveal">
-
-                <div class="mini-icon">
-                    
-                </div>
-
-                <h3>
-                    Apple
-                </h3>
-
-                <p>
-                    Hardware, software, and an unhealthy
-                    amount of interest in both.
-                </p>
-
-            </div>
-
-
-            <div class="glass-card mini-card reveal">
-
-                <div class="mini-icon">
-                    ⌘
-                </div>
-
-                <h3>
-                    Computers
-                </h3>
-
-                <p>
-                    If it has a processor,
-                    I'll probably end up messing with it.
-                </p>
-
-            </div>
-
-        </div>
+        <p>
+            Most days, you'll probably find me at my desk with
+            a MacBook open and far too many things happening on
+            the screen.
+        </p>
 
     </div>
 
 </section>
 
 
-<!-- =======================================================
-     INTERESTS
-     ======================================================= -->
-
-<section
-    class="section"
-    id="interests"
->
+<section class="section" id="things">
 
     <div class="section-intro reveal">
 
-        <div class="section-eyebrow">
-            Interests
+        <div class="section-label">
+            A few things
         </div>
 
         <h2>
-            Things I like.
+            What tends to<br>
+            occupy my time.
         </h2>
 
-        <p class="section-lead">
-            The usual suspects.
+        <p>
+            Nothing particularly complicated. Just the things
+            I keep coming back to.
         </p>
 
     </div>
 
 
-    <div class="interests">
+    <div class="details">
 
-        <div class="interest reveal">
+        <div class="detail reveal">
 
-            <div class="interest-icon">
+            <div class="detail-symbol">
                 
             </div>
 
-            <span>
+            <h3>
                 Apple
-            </span>
+            </h3>
+
+            <p>
+                Macs, iPhones, software, hardware,
+                and knowing far too much about Apple chips.
+            </p>
 
         </div>
 
 
-        <div class="interest reveal">
+        <div class="detail reveal">
 
-            <div class="interest-icon">
-                ◇
-            </div>
-
-            <span>
-                Roblox
-            </span>
-
-        </div>
-
-
-        <div class="interest reveal">
-
-            <div class="interest-icon">
+            <div class="detail-symbol">
                 ⌘
             </div>
 
-            <span>
+            <h3>
                 Computers
-            </span>
+            </h3>
+
+            <p>
+                Building things, breaking things,
+                fixing them, then doing it all again.
+            </p>
 
         </div>
 
 
-        <div class="interest reveal">
+        <div class="detail reveal">
 
-            <div class="interest-icon">
-                ✦
+            <div class="detail-symbol">
+                ◇
             </div>
 
-            <span>
-                Furry stuff
-            </span>
+            <h3>
+                Roblox
+            </h3>
+
+            <p>
+                I've been playing for years.
+                Somehow, I still haven't got bored of it.
+            </p>
 
         </div>
 
@@ -1434,20 +1094,25 @@ footer {
 
 </section>
 
+
+<section class="section end reveal">
+
+    <div class="end-line"></div>
+
+    <p>
+        That's about it. There isn't a bigger story hiding here.
+        It's just a website about me, made because I wanted one.
+    </p>
+
+</section>
 
 </main>
 
 
-<!-- =======================================================
-     FOOTER
-     ======================================================= -->
-
 <footer>
 
-    <div>
-        <span class="footer-brand">
-            Made by Kyuto on a Mac.
-        </span>
+    <div class="footer-main">
+        <strong>kyuto.xyz</strong> · made by Kyuto
     </div>
 
 </footer>
@@ -1457,54 +1122,67 @@ footer {
 
 /* =========================================================
    NAVIGATION
-   The floating bar disappears once the hero is left.
+   Disappears after the user has scrolled down.
+   Returns when they scroll back toward the top.
    ========================================================= */
 
-const navShell =
-    document.getElementById("navShell");
+const nav = document.getElementById("nav");
 
-const hero =
-    document.querySelector(".hero");
+let lastScrollY = window.scrollY;
+let navTicking = false;
 
-function updateNav() {
+function updateNavigation() {
 
-    const heroBottom =
-        hero.getBoundingClientRect().bottom;
+    const currentScrollY = window.scrollY;
 
-    navShell.classList.toggle(
-        "hidden",
-        heroBottom < 100
-    );
+    if (currentScrollY <= 40) {
+        nav.classList.remove("hidden");
+    }
 
+    else if (
+        currentScrollY > lastScrollY &&
+        currentScrollY > 140
+    ) {
+        nav.classList.add("hidden");
+    }
+
+    else if (currentScrollY < lastScrollY) {
+        nav.classList.remove("hidden");
+    }
+
+    lastScrollY = currentScrollY;
+    navTicking = false;
 }
 
 window.addEventListener(
     "scroll",
-    updateNav,
+    () => {
+
+        if (!navTicking) {
+
+            requestAnimationFrame(
+                updateNavigation
+            );
+
+            navTicking = true;
+        }
+
+    },
     { passive: true }
 );
 
-updateNav();
-
 
 /* =========================================================
-   CURSOR PARALLAX
+   HERO LIGHT
    ========================================================= */
 
-const root =
-    document.documentElement;
+const root = document.documentElement;
 
-let mouseX =
-    window.innerWidth / 2;
+let mouseX = window.innerWidth / 2;
+let mouseY = window.innerHeight / 2;
 
-let mouseY =
-    window.innerHeight / 2;
-
-let currentX =
-    mouseX;
-
-let currentY =
-    mouseY;
+let currentX = mouseX;
+let currentY = mouseY;
 
 document.addEventListener(
     "pointermove",
@@ -1517,13 +1195,13 @@ document.addEventListener(
     { passive: true }
 );
 
-function animateCursor() {
+function animateLight() {
 
     currentX +=
-        (mouseX - currentX) * .045;
+        (mouseX - currentX) * .035;
 
     currentY +=
-        (mouseY - currentY) * .045;
+        (mouseY - currentY) * .035;
 
     root.style.setProperty(
         "--mx",
@@ -1536,12 +1214,11 @@ function animateCursor() {
     );
 
     requestAnimationFrame(
-        animateCursor
+        animateLight
     );
-
 }
 
-animateCursor();
+animateLight();
 
 
 /* =========================================================
@@ -1566,7 +1243,6 @@ const observer =
                         observer.unobserve(
                             entry.target
                         );
-
                     }
 
                 }
@@ -1576,10 +1252,9 @@ const observer =
         {
             threshold: .12,
             rootMargin:
-                "0px 0px -40px 0px"
+                "0px 0px -35px 0px"
         }
     );
-
 
 document
     .querySelectorAll(".reveal")
@@ -1591,7 +1266,7 @@ document
 
 
 /* =========================================================
-   SMOOTH ANCHORS
+   INTERNAL LINKS
    ========================================================= */
 
 document
