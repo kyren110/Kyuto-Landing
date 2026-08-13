@@ -892,7 +892,7 @@ footer {
 
 <header class="nav hidden" id="nav">
 
-    <a class="nav-brand" href="#">
+    <a class="nav-brand" href="#top">
         kyuto.xyz
     </a>
 
@@ -926,7 +926,6 @@ footer {
         </h1>
 
     </div>
-
 
     <div
         class="scroll-area"
@@ -1123,15 +1122,15 @@ footer {
 
 /* =========================================================
    NAVIGATION
-   The nav starts hidden so the landing screen stays clean.
-   It appears when the user starts scrolling.
+   The navigation appears immediately after the landing
+   section has been passed.
    ========================================================= */
 
 const nav =
     document.getElementById("nav");
 
-let lastScrollY =
-    window.scrollY;
+const hero =
+    document.getElementById("top");
 
 let navTicking =
     false;
@@ -1141,31 +1140,18 @@ function updateNavigation() {
     const currentScrollY =
         window.scrollY;
 
-    if (currentScrollY <= 40) {
+    const heroBottom =
+        hero.offsetTop + hero.offsetHeight;
 
-        nav.classList.add("hidden");
-
-    }
-
-    else if (
-        currentScrollY > lastScrollY &&
-        currentScrollY > 140
-    ) {
-
-        nav.classList.add("hidden");
-
-    }
-
-    else if (
-        currentScrollY < lastScrollY
-    ) {
+    if (currentScrollY >= heroBottom - 80) {
 
         nav.classList.remove("hidden");
 
-    }
+    } else {
 
-    lastScrollY =
-        currentScrollY;
+        nav.classList.add("hidden");
+
+    }
 
     navTicking =
         false;
