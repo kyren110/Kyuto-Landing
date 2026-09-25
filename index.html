@@ -11,7 +11,7 @@
 <script
     data-goatcounter="https://kyutoxyz.goatcounter.com/count"
     async
-    src="//gc.zgo.at/count.js">
+    src="https://gc.zgo.at/count.js">
 </script>
 
 <style>
@@ -50,9 +50,7 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-/* =========================
-   NAVIGATION
-   ========================= */
+/* NAV */
 
 nav {
     position: fixed;
@@ -104,9 +102,7 @@ nav {
     color: var(--text);
 }
 
-/* =========================
-   HERO
-   ========================= */
+/* HERO */
 
 .hero {
     min-height: 100vh;
@@ -188,9 +184,7 @@ nav {
     background: #0071e3;
 }
 
-/* =========================
-   GENERAL
-   ========================= */
+/* GENERAL */
 
 section {
     padding: 130px 30px;
@@ -201,9 +195,7 @@ section {
     margin: auto;
 }
 
-/* =========================
-   ABOUT
-   ========================= */
+/* ABOUT */
 
 .about {
     background: white;
@@ -237,9 +229,7 @@ section {
     color: var(--secondary);
 }
 
-/* =========================
-   INTERESTS
-   ========================= */
+/* INTERESTS */
 
 .interests {
     background: var(--background);
@@ -312,9 +302,7 @@ section {
     line-height: 1.5;
 }
 
-/* =========================
-   CONTACT
-   ========================= */
+/* CONTACT */
 
 .contact {
     padding: 170px 30px;
@@ -358,9 +346,7 @@ section {
     text-decoration: underline;
 }
 
-/* =========================
-   FOOTER
-   ========================= */
+/* FOOTER */
 
 footer {
     min-height: 70px;
@@ -390,9 +376,7 @@ footer {
     font-variant-numeric: tabular-nums;
 }
 
-/* =========================
-   MOBILE
-   ========================= */
+/* MOBILE */
 
 @media (max-width: 700px) {
 
@@ -647,28 +631,24 @@ footer {
 <!-- GOATCOUNTER TOTAL VIEW COUNT -->
 
 <script>
-(function () {
+const goatCounterTimer = setInterval(function () {
 
-    const timer = setInterval(function () {
+    if (
+        window.goatcounter &&
+        window.goatcounter.visit_count
+    ) {
 
-        if (
-            window.goatcounter &&
-            window.goatcounter.visit_count
-        ) {
+        clearInterval(goatCounterTimer);
 
-            clearInterval(timer);
+        window.goatcounter.visit_count({
+            append: "#view-count",
+            path: "TOTAL",
+            no_branding: true
+        });
 
-            window.goatcounter.visit_count({
-                append: "#view-count",
-                path: "TOTAL",
-                no_branding: true
-            });
+    }
 
-        }
-
-    }, 100);
-
-})();
+}, 100);
 </script>
 
 </body>
