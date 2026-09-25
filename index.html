@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="theme-color" content="#000000">
-<meta name="description" content="Kyuto.xyz — a personal website by Kyuto.">
+<meta name="theme-color" content="#080b12">
+<meta name="description" content="Kyuto.xyz — a little place on the internet by Kyuto.">
 
 <title>Kyuto — kyuto.xyz</title>
 
@@ -17,13 +17,20 @@
 }
 
 :root {
-    --bg: #000;
-    --surface: rgba(28,28,30,.72);
-    --text: #f5f5f7;
-    --secondary: #a1a1a6;
-    --tertiary: #6e6e73;
-    --blue: #2997ff;
-    --line: rgba(255,255,255,.12);
+    --bg: #06080d;
+
+    --surface: rgba(19, 23, 32, .72);
+    --surface-light: rgba(28, 34, 46, .72);
+
+    --text: #f5f7ff;
+    --secondary: #aeb7c9;
+    --tertiary: #70798a;
+
+    --blue: #8edcff;
+    --blue-bright: #54c8ff;
+    --lavender: #a9a7ff;
+
+    --line: rgba(255,255,255,.11);
 
     --mx: 50vw;
     --my: 50vh;
@@ -57,15 +64,20 @@ body {
 
     background:
         radial-gradient(
-            ellipse 900px 650px at 50% -150px,
-            rgba(65,65,70,.42),
+            ellipse 850px 600px at 50% -160px,
+            rgba(100, 150, 190, .20),
             transparent 70%
         ),
-        #000;
+        radial-gradient(
+            ellipse 700px 500px at 80% 40%,
+            rgba(100, 90, 180, .08),
+            transparent 70%
+        ),
+        #06080d;
 }
 
 ::selection {
-    color: #000;
+    color: #061018;
     background: var(--blue);
 }
 
@@ -75,7 +87,7 @@ a {
 
 
 /* =========================================================
-   TOP NAV
+   NAVIGATION
    ========================================================= */
 
 .nav {
@@ -95,14 +107,14 @@ a {
 
     padding: 0 18px;
 
-    border: 1px solid rgba(255,255,255,.13);
+    border: 1px solid rgba(255,255,255,.12);
     border-radius: 999px;
 
-    background: rgba(28,28,30,.72);
+    background: rgba(15,19,27,.74);
 
     box-shadow:
-        0 16px 50px rgba(0,0,0,.35),
-        inset 0 1px 0 rgba(255,255,255,.08);
+        0 18px 55px rgba(0,0,0,.38),
+        inset 0 1px 0 rgba(255,255,255,.07);
 
     backdrop-filter:
         saturate(180%)
@@ -146,7 +158,7 @@ a {
 
     border-radius: 999px;
 
-    color: #b8b8bd;
+    color: #aeb6c5;
 
     font-size: 12px;
     font-weight: 500;
@@ -160,7 +172,9 @@ a {
 
 .nav-links a:hover {
     color: #fff;
-    background: rgba(255,255,255,.08);
+
+    background:
+        rgba(142,220,255,.08);
 }
 
 
@@ -206,8 +220,8 @@ a {
     background:
         radial-gradient(
             ellipse,
-            rgba(255,255,255,.13) 0%,
-            rgba(120,120,130,.09) 35%,
+            rgba(150,220,255,.13) 0%,
+            rgba(120,130,210,.08) 35%,
             transparent 70%
         );
 
@@ -235,7 +249,7 @@ a {
     padding:
         .12em
         .12em
-        .18em;
+        .08em;
 
     font-size:
         clamp(
@@ -254,9 +268,6 @@ a {
         );
 
     font-weight: 700;
-
-    white-space: normal;
-    overflow: visible;
 }
 
 .hero h1 span {
@@ -265,9 +276,9 @@ a {
     background:
         linear-gradient(
             180deg,
-            #fff 0%,
-            #e5e5e7 48%,
-            #77777d 100%
+            #ffffff 0%,
+            #e6f4ff 45%,
+            #8da0b8 100%
         );
 
     -webkit-background-clip: text;
@@ -276,9 +287,28 @@ a {
     color: transparent;
 }
 
+.hero-subtitle {
+    margin-top: 18px;
+
+    color: #aebbd0;
+
+    font-size: 17px;
+    font-weight: 500;
+
+    letter-spacing: -.2px;
+}
+
+.hero-subtitle span {
+    display: inline-block;
+
+    margin-left: 5px;
+
+    color: var(--blue);
+}
+
 
 /* =========================================================
-   SWIPE INDICATOR
+   SCROLL INDICATOR
    ========================================================= */
 
 .scroll-area {
@@ -294,7 +324,7 @@ a {
     align-items: center;
     gap: 10px;
 
-    color: #a1a1a6;
+    color: #8f99aa;
 
     font-size: 13px;
     font-weight: 500;
@@ -314,12 +344,13 @@ a {
     display: grid;
     place-items: center;
 
-    border: 1px solid rgba(255,255,255,.18);
+    border: 1px solid rgba(142,220,255,.18);
     border-radius: 50%;
 
-    background: rgba(255,255,255,.07);
+    background:
+        rgba(142,220,255,.06);
 
-    color: #f5f5f7;
+    color: #dff6ff;
 
     font-size: 17px;
 
@@ -349,9 +380,9 @@ main {
 .section-label {
     margin-bottom: 14px;
 
-    color: var(--secondary);
+    color: var(--blue);
 
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 500;
 }
 
@@ -410,20 +441,20 @@ main {
 
     overflow: hidden;
 
-    border: 1px solid rgba(255,255,255,.11);
+    border: 1px solid rgba(142,220,255,.10);
 
     border-radius: 34px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(35,35,38,.9),
-            rgba(20,20,22,.72)
+            rgba(24,31,43,.88),
+            rgba(13,17,25,.76)
         );
 
     box-shadow:
         0 30px 90px rgba(0,0,0,.38),
-        inset 0 1px 0 rgba(255,255,255,.07);
+        inset 0 1px 0 rgba(255,255,255,.06);
 
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
@@ -445,7 +476,7 @@ main {
     background:
         radial-gradient(
             circle,
-            rgba(41,151,255,.13),
+            rgba(84,200,255,.12),
             transparent 68%
         );
 }
@@ -455,18 +486,18 @@ main {
 
     position: absolute;
 
-    width: 320px;
-    height: 320px;
+    width: 360px;
+    height: 360px;
 
-    left: -220px;
-    bottom: -240px;
+    left: -240px;
+    bottom: -260px;
 
     border-radius: 50%;
 
     background:
         radial-gradient(
             circle,
-            rgba(175,82,222,.10),
+            rgba(169,167,255,.10),
             transparent 68%
         );
 }
@@ -498,7 +529,7 @@ main {
 
 
 /* =========================================================
-   SMALL DETAILS
+   DETAILS
    ========================================================= */
 
 .details {
@@ -518,16 +549,16 @@ main {
 
     padding: 28px;
 
-    border: 1px solid rgba(255,255,255,.11);
+    border: 1px solid rgba(255,255,255,.10);
 
     border-radius: 27px;
 
     background:
-        rgba(28,28,30,.72);
+        rgba(17,21,29,.72);
 
     box-shadow:
         0 20px 60px rgba(0,0,0,.25),
-        inset 0 1px 0 rgba(255,255,255,.06);
+        inset 0 1px 0 rgba(255,255,255,.05);
 
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
@@ -535,18 +566,22 @@ main {
     transition:
         transform .5s var(--spring),
         box-shadow .5s ease,
-        background .3s ease;
+        background .3s ease,
+        border-color .3s ease;
 }
 
 .detail:hover {
     transform: translateY(-7px);
 
     background:
-        rgba(38,38,40,.78);
+        rgba(24,30,41,.78);
+
+    border-color:
+        rgba(142,220,255,.15);
 
     box-shadow:
         0 30px 80px rgba(0,0,0,.38),
-        inset 0 1px 0 rgba(255,255,255,.09);
+        inset 0 1px 0 rgba(255,255,255,.08);
 }
 
 .detail-symbol {
@@ -561,9 +596,9 @@ main {
     border-radius: 13px;
 
     background:
-        rgba(255,255,255,.07);
+        rgba(142,220,255,.07);
 
-    color: var(--text);
+    color: #dff7ff;
 
     font-size: 19px;
 }
@@ -606,7 +641,7 @@ main {
         0 auto
         28px;
 
-    background: #444448;
+    background: #3e4652;
 }
 
 .end p {
@@ -618,6 +653,16 @@ main {
 
     font-size: 17px;
     line-height: 1.55;
+}
+
+.end .snow {
+    display: inline-block;
+
+    margin-top: 14px;
+
+    color: var(--blue);
+
+    font-size: 18px;
 }
 
 
@@ -784,7 +829,7 @@ footer {
         padding:
             .13em
             .08em
-            .20em;
+            .10em;
 
         font-size:
             clamp(
@@ -796,6 +841,10 @@ footer {
         line-height: 1.05;
 
         letter-spacing: -3.5px;
+    }
+
+    .hero-subtitle {
+        font-size: 15px;
     }
 
     .scroll-area {
@@ -903,7 +952,7 @@ footer {
         </a>
 
         <a href="#things">
-            A few things
+            Things
         </a>
 
     </nav>
@@ -912,7 +961,7 @@ footer {
 
 
 <!-- =======================================================
-     FIRST LANDING
+     HERO
      ======================================================= -->
 
 <section class="hero" id="top">
@@ -925,6 +974,10 @@ footer {
             <span>Hey, I'm Kyuto.</span>
         </h1>
 
+        <div class="hero-subtitle">
+            somewhere in the snow <span>❄️</span>
+        </div>
+
     </div>
 
     <div
@@ -933,7 +986,7 @@ footer {
     >
 
         <span>
-            Swipe up to explore
+            Scroll to explore
         </span>
 
         <span class="scroll-arrow">
@@ -956,16 +1009,15 @@ footer {
     <div class="section-intro reveal">
 
         <div class="section-label">
-            About me
+            ❄️ About me
         </div>
 
         <h2>
-            I'm just me.
+            Just me.
         </h2>
 
         <p>
-            I made this website because I wanted somewhere
-            that feels like mine.
+            A little corner of the internet that feels like mine.
         </p>
 
     </div>
@@ -974,28 +1026,32 @@ footer {
     <div class="personal-card reveal">
 
         <p>
-            I'm Kyuto. I spend a lot of my time messing around
-            with computers, trying new things, and getting curious
-            about basically anything that catches my attention.
+            I'm <strong>Kyuto</strong>. I spend a lot of my time
+            on computers, playing games, making things, and
+            getting interested in whatever catches my attention.
         </p>
 
         <p>
-            I really like <strong>Apple products</strong>.
-            I like knowing how my Mac works, trying things I
-            probably shouldn't, and finding out what I can make
-            my devices do.
+            I'm really into <strong>Apple</strong>.
+            Macs, iPhones, Apple software, hardware, and
+            probably knowing more about Apple chips than I need to.
         </p>
 
         <p>
-            I also spend a lot of time playing <strong>Roblox</strong>.
-            I've been playing it for years, and somehow I still
-            keep finding new things to do on it.
+            I play quite a few <strong>games</strong> too.
+            CS2, Roblox, flight simulators and whatever else
+            I'm into at the time. 🎮
         </p>
 
         <p>
-            Most of the time, I'm probably at my desk with my
-            MacBook open, listening to something, and doing
-            something completely unnecessary.
+            I also really like <strong>snowy places</strong>.
+            Cold weather, quiet streets, mountains, winter
+            skies and that whole atmosphere. ❄️
+        </p>
+
+        <p>
+            And yes, I have a soft spot for being a little
+            <strong>puppy</strong> sometimes. 🐶
         </p>
 
     </div>
@@ -1012,7 +1068,7 @@ footer {
     <div class="section-intro reveal">
 
         <div class="section-label">
-            A few things about me
+            🐾 A few things
         </div>
 
         <h2>
@@ -1020,7 +1076,7 @@ footer {
         </h2>
 
         <p>
-            These are some of the things I keep coming back to.
+            A few things you'll probably find me doing.
         </p>
 
     </div>
@@ -1039,8 +1095,8 @@ footer {
             </h3>
 
             <p>
-                I like Macs, iPhones, Apple software,
-                and probably knowing too much about Apple chips.
+                Macs, iPhones, Apple software and keeping up
+                with whatever Apple is doing next.
             </p>
 
         </div>
@@ -1057,8 +1113,8 @@ footer {
             </h3>
 
             <p>
-                I like taking things apart, trying things,
-                fixing things, and seeing what happens.
+                Trying things, changing things, fixing things,
+                and occasionally wondering why I changed them.
             </p>
 
         </div>
@@ -1067,16 +1123,70 @@ footer {
         <div class="detail reveal">
 
             <div class="detail-symbol">
-                ◇
+                🎮
             </div>
 
             <h3>
-                Roblox
+                Games
             </h3>
 
             <p>
-                I've played for years and still somehow
-                spend way too much time on it.
+                CS2, Roblox, flight simulators and whatever
+                happens to be fun right now.
+            </p>
+
+        </div>
+
+
+        <div class="detail reveal">
+
+            <div class="detail-symbol">
+                ❄️
+            </div>
+
+            <h3>
+                Snow
+            </h3>
+
+            <p>
+                Snowy cities, mountains, cold weather and
+                northern skies. Basically anything winter.
+            </p>
+
+        </div>
+
+
+        <div class="detail reveal">
+
+            <div class="detail-symbol">
+                🐶
+            </div>
+
+            <h3>
+                Puppy
+            </h3>
+
+            <p>
+                A small but important part of my personality.
+                🐾
+            </p>
+
+        </div>
+
+
+        <div class="detail reveal">
+
+            <div class="detail-symbol">
+                ♡
+            </div>
+
+            <h3>
+                Making things
+            </h3>
+
+            <p>
+                Websites, Roblox projects and random ideas
+                that somehow turn into entire projects.
             </p>
 
         </div>
@@ -1095,10 +1205,13 @@ footer {
     <div class="end-line"></div>
 
     <p>
-        That's pretty much me. Nothing complicated.
-        I just wanted a little place on the internet
-        that I could call mine.
+        That's about it.
+        Thanks for visiting my little corner of the internet.
     </p>
+
+    <span class="snow">
+        stay warm ❄️
+    </span>
 
 </section>
 
@@ -1122,8 +1235,6 @@ footer {
 
 /* =========================================================
    NAVIGATION
-   The navigation appears immediately after the landing
-   section has been passed.
    ========================================================= */
 
 const nav =
@@ -1153,8 +1264,7 @@ function updateNavigation() {
 
     }
 
-    navTicking =
-        false;
+    navTicking = false;
 }
 
 window.addEventListener(
@@ -1167,8 +1277,7 @@ window.addEventListener(
                 updateNavigation
             );
 
-            navTicking =
-                true;
+            navTicking = true;
         }
 
     },
