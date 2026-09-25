@@ -189,7 +189,7 @@ nav {
 }
 
 /* =========================
-   GENERAL SECTIONS
+   GENERAL
    ========================= */
 
 section {
@@ -384,6 +384,10 @@ footer {
     display: flex;
     align-items: center;
     gap: 5px;
+}
+
+#view-count {
+    font-variant-numeric: tabular-nums;
 }
 
 /* =========================
@@ -612,8 +616,8 @@ footer {
         Thanks for stopping by.
     </p>
 
-    <a href="mailto:hello@kyuto.xyz">
-        hello@kyuto.xyz →
+    <a href="mailto:hello@kyro.xyz">
+        hello@kyro.xyz →
     </a>
 
 </section>
@@ -640,56 +644,29 @@ footer {
 </footer>
 
 
-<!-- GOATCOUNTER VIEW COUNT -->
+<!-- GOATCOUNTER TOTAL VIEW COUNT -->
 
 <script>
 (function () {
 
-    const countElement = document.getElementById("view-count");
+    const timer = setInterval(function () {
 
-    function loadViewCount() {
+        if (
+            window.goatcounter &&
+            window.goatcounter.visit_count
+        ) {
 
-        if (!window.goatcounter || !window.goatcounter.get_data) {
-            setTimeout(loadViewCount, 100);
-            return;
+            clearInterval(timer);
+
+            window.goatcounter.visit_count({
+                append: "#view-count",
+                path: "TOTAL",
+                no_branding: true
+            });
+
         }
 
-        const data = window.goatcounter.get_data();
-
-        if (!data || !data.p) {
-            countElement.textContent = "—";
-            return;
-        }
-
-        const path = encodeURIComponent(data.p);
-
-        fetch(
-            "https://kyutoxyz.goatcounter.com/counter/"
-            + path
-            + ".json"
-        )
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Unable to load view count");
-            }
-
-            return response.json();
-        })
-        .then(data => {
-
-            if (data.count !== undefined) {
-                countElement.textContent = data.count;
-            } else {
-                countElement.textContent = "0";
-            }
-
-        })
-        .catch(() => {
-            countElement.textContent = "—";
-        });
-    }
-
-    loadViewCount();
+    }, 100);
 
 })();
 </script>
