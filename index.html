@@ -17,7 +17,6 @@
 <style>
 :root {
     --blue: #007aff;
-    --blue-light: #eaf6ff;
     --text: #111111;
     --secondary: #6e6e73;
     --background: #f7fbff;
@@ -257,8 +256,7 @@ section {
 .interest-grid {
     display: grid;
 
-    grid-template-columns:
-        repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
 
     gap: 20px;
 
@@ -382,8 +380,10 @@ footer {
     border-top: 1px solid var(--border);
 }
 
-.footer-views {
-    opacity: .8;
+.views {
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
 /* =========================
@@ -627,6 +627,10 @@ footer {
         kyro.
     </span>
 
+    <span class="views">
+        👁
+        <span id="view-count">Loading...</span>
+        views
     </span>
 
     <span>
@@ -634,6 +638,61 @@ footer {
     </span>
 
 </footer>
+
+
+<!-- GOATCOUNTER VIEW COUNT -->
+
+<script>
+(function () {
+
+    const countElement = document.getElementById("view-count");
+
+    function loadViewCount() {
+
+        if (!window.goatcounter || !window.goatcounter.get_data) {
+            setTimeout(loadViewCount, 100);
+            return;
+        }
+
+        const data = window.goatcounter.get_data();
+
+        if (!data || !data.p) {
+            countElement.textContent = "—";
+            return;
+        }
+
+        const path = encodeURIComponent(data.p);
+
+        fetch(
+            "https://kyutoxyz.goatcounter.com/counter/"
+            + path
+            + ".json"
+        )
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Unable to load view count");
+            }
+
+            return response.json();
+        })
+        .then(data => {
+
+            if (data.count !== undefined) {
+                countElement.textContent = data.count;
+            } else {
+                countElement.textContent = "0";
+            }
+
+        })
+        .catch(() => {
+            countElement.textContent = "—";
+        });
+    }
+
+    loadViewCount();
+
+})();
+</script>
 
 </body>
 </html>
