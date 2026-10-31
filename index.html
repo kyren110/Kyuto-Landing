@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0d0f15">
+
+<title>Kyro — Developer</title>
+<meta name="description" content="Hi, I'm Xav, I'm a Roblox game developer at Azure Studios.">
+
+<script
+    data-goatcounter="https://kyutoxyz.goatcounter.com/count"
+    async
+    src="https://gc.zgo.at/count.js">
+</script>
+
+<style>
+:root {
+    color-scheme: dark;
+    --bg: #0d0f15;
+    --tile: #141720;
+    --tile-2: #1a1e29;
+    --text: #eceef3;
+    --muted: #8d94a5;
+    --line: rgba(255,255,255,.07);
+    --blue: #3d8bff;
+    --blue-2: #8ab8ff;
+    --amber: #ffb454;
+    --mint: #6ee7b7;
+    --rose: #ff7a90;
+    --mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", "Helvetica Neue", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+}
+
+a { color: inherit; }
+a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--blue-2);
+    outline-offset: 3px;
+    border-radius: 8px;
+}
+
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+/* NAV */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 72px;
+}
+.logo { font-size: 20px; font-weight: 700; letter-spacing: -.05em; text-decoration: none; }
+.logo i { font-style: normal; color: var(--blue); }
+.pill {
+    padding: 9px 16px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: var(--tile);
+    font-size: 13px;
+    text-decoration: none;
+    color: var(--text);
+    transition: background .2s;
+}
+.pill:hover { background: var(--tile-2); }
+
+/* HERO */
+.hero {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 56px;
+    align-items: center;
+    padding: 72px 0 88px;
+}
+
+.status {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 26px;
+}
+.dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--mint);
+    box-shadow: 0 0 12px var(--mint);
+}
+
+h1 {
+    font-size: clamp(54px, 8.4vw, 104px);
+    font-weight: 700;
+    letter-spacing: -.065em;
+    line-height: .92;
+}
+h1 em { font-style: normal; color: var(--muted); }
+
+.intro {
+    margin-top: 28px;
+    max-width: 440px;
+    font-size: 19px;
+    line-height: 1.6;
+    color: var(--muted);
+    letter-spacing: -.01em;
+}
+.intro strong { color: var(--text); font-weight: 550; }
+
+.buttons { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+.btn {
+    padding: 13px 22px;
+    border-radius: 14px;
+    background: var(--blue);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform .2s, background .2s;
+}
+.btn:hover { background: #5a9fff; transform: translateY(-1px); }
+.btn.ghost { background: var(--tile); border: 1px solid var(--line); color: var(--text); }
+.btn.ghost:hover { background: var(--tile-2); }
+
+/* CODE WINDOW — the one memorable thing */
+.editor {
+    position: relative;
+    background: #10131b;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    box-shadow: 0 40px 80px -30px rgba(61,139,255,.28), 0 0 0 1px rgba(255,255,255,.02) inset;
+    overflow: hidden;
+}
+.editor-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--line);
+    background: rgba(255,255,255,.02);
+}
+.editor-bar span { width: 11px; height: 11px; border-radius: 50%; background: #2b303d; }
+.editor-bar b {
+    margin-left: 10px;
+    font: 500 12px var(--mono);
+    color: var(--muted);
+}
+pre {
+    padding: 22px 22px 26px;
+    font: 13.5px/1.85 var(--mono);
+    color: #c9cfdd;
+    overflow-x: auto;
+    tab-size: 4;
+}
+.ln { display: inline-block; width: 26px; color: #3d4354; user-select: none; }
+.k { color: var(--rose); }
+.s { color: var(--amber); }
+.n { color: var(--mint); }
+.f { color: var(--blue-2); }
+.c { color: #565e72; }
+.s a { text-decoration: none; border-bottom: 1px dashed rgba(255,180,84,.5); }
+.s a:hover { border-color: var(--amber); }
+.caret {
+    display: inline-block;
+    width: 8px; height: 1.1em;
+    margin-left: 2px;
+    vertical-align: text-bottom;
+    background: var(--blue-2);
+    animation: blink 1.1s steps(1) infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+/* BENTO */
+.section-title {
+    font-size: 15px;
+    color: var(--muted);
+    font-weight: 500;
+    margin-bottom: 18px;
+}
+
+.bento {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 14px;
+}
+
+.tile {
+    position: relative;
+    padding: 28px;
+    background: var(--tile);
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    overflow: hidden;
+}
+.tile h3 { font-size: 20px; font-weight: 620; letter-spacing: -.03em; }
+.tile p { margin-top: 10px; font-size: 14.5px; line-height: 1.65; color: var(--muted); max-width: 440px; }
+
+.span-4 { grid-column: span 4; }
+.span-3 { grid-column: span 3; }
+.span-2 { grid-column: span 2; }
+
+/* visits tile */
+.big {
+    font-size: clamp(64px, 10vw, 120px);
+    font-weight: 700;
+    letter-spacing: -.07em;
+    line-height: 1;
+    color: var(--blue-2);
+}
+.visits { display: flex; flex-direction: column; justify-content: space-between; min-height: 300px; }
+.bars {
+    position: absolute;
+    right: 28px; bottom: 28px;
+    display: flex;
+    align-items: flex-end;
+    gap: 6px;
+    height: 120px;
+}
+.bars i {
+    width: 12px;
+    border-radius: 5px 5px 2px 2px;
+    background: linear-gradient(180deg, var(--blue), rgba(61,139,255,.15));
+}
+
+/* studio tile */
+.studio {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: linear-gradient(160deg, #1b2a4d, var(--tile) 70%);
+}
+.studio .name { font-size: 40px; font-weight: 700; letter-spacing: -.06em; }
+
+/* small code tiles */
+.mini {
+    margin-top: 18px;
+    padding: 14px 16px;
+    background: #0f121a;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    font: 12.5px/1.8 var(--mono);
+    color: #c9cfdd;
+    overflow-x: auto;
+    white-space: pre;
+}
+
+/* design tile */
+.swatches { display: flex; gap: 8px; margin-top: 22px; }
+.swatches i { width: 36px; height: 36px; border-radius: 11px; border: 1px solid var(--line); }
+.radii { display: flex; gap: 8px; margin-top: 10px; }
+.radii i { width: 36px; height: 36px; border: 1.5px solid var(--blue); background: rgba(61,139,255,.1); }
+
+/* perf tile */
+.frames { margin-top: 22px; display: grid; gap: 10px; max-width: 420px; }
+.frame { display: grid; grid-template-columns: 74px 1fr 52px; gap: 12px; align-items: center; font: 12px var(--mono); color: var(--muted); }
+.frame u { display: block; height: 8px; border-radius: 5px; background: var(--tile-2); overflow: hidden; text-decoration: none; }
+.frame u b { display: block; height: 100%; border-radius: 5px; }
+.frame em { font-style: normal; text-align: right; color: var(--text); }
+
+/* CONTACT */
+.contact {
+    margin: 14px 0 0;
+    padding: 56px 40px;
+    border-radius: 28px;
+    border: 1px solid var(--line);
+    background: radial-gradient(120% 140% at 0% 0%, rgba(61,139,255,.2), transparent 55%), var(--tile);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 28px;
+}
+.contact h2 { font-size: clamp(34px, 6vw, 60px); letter-spacing: -.055em; line-height: 1; font-weight: 700; }
+.contact .discord {
+    font-size: 18px;
+    font-weight: 550;
+    text-decoration: none;
+    color: var(--text);
+    padding: 15px 24px;
+    border-radius: 16px;
+    background: rgba(255,255,255,.07);
+    border: 1px solid var(--line);
+    transition: background .2s;
+}
+.contact .discord:hover { background: rgba(255,255,255,.12); }
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 34px 0 44px;
+    font-size: 13px;
+    color: var(--muted);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; gap: 44px; padding: 40px 0 64px; }
+    .span-4, .span-3, .span-2 { grid-column: span 6; }
+    .visits { min-height: 260px; }
+}
+@media (max-width: 520px) {
+    .tile { padding: 22px; }
+    .contact { padding: 36px 24px; }
+    .bars { display: none; }
+    footer { flex-direction: column; gap: 4px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+
+<nav>
+    <a href="#" class="logo">kyro<i>.</i></a>
+    <a class="pill" href="https://discord.com/users/613868680996061210" target="_blank" rel="noopener">Contact ↗</a>
+</nav>
+
+<header class="hero">
+    <div>
+        <div class="status"><span class="dot"></span>Game developer at Azure Studios</div>
+        <h1>Roblox games, <em>built to scale.</em></h1>
+        <p class="intro">
+            I'm Xav. I write <strong>Luau</strong>, gameplay and server systems for
+            experiences that have passed 100 million visits. I specialise in anticheat
+            development and backend systems.
+        </p>
+        <div class="buttons">
+            <a class="btn" href="#work">See what I do</a>
+            <a class="btn ghost" href="https://discord.com/users/613868680996061210" target="_blank" rel="noopener">Add me on Discord</a>
+        </div>
+    </div>
+
+    <div class="editor" aria-label="Luau code describing Kyro">
+        <div class="editor-bar"><span></span><span></span><span></span><b>Kyro.luau</b></div>
+<pre><span class="ln">1</span><span class="k">local</span> Kyro = {
+<span class="ln">2</span>    role   = <span class="s">"Game Developer"</span>,
+<span class="ln">3</span>    studio = <span class="s">"Azure Studios"</span>,
+<span class="ln">4</span>    visits = <span class="n">100_000_000</span>,
+<span class="ln">5</span>    focus  = { <span class="s">"Luau"</span>, <span class="s">"Gameplay"</span>, <span class="s">"Systems"</span> },
+<span class="ln">6</span>}
+<span class="ln">7</span>
+<span class="ln">8</span><span class="c">-- always happy to talk on discord - iln0 </span>
+<span class="ln">9</span><span class="k">function</span> <span class="f">Xav:contact</span>()
+<span class="ln">10</span>    <span class="k">return</span> <span class="s"><a href="https://discord.com/users/613868680996061210" target="_blank" rel="noopener">"@iln0"</a></span>
+<span class="ln">11</span><span class="k">end</span><span class="caret"></span></pre>
+    </div>
+</header>
+
+<main id="work">
+    <div class="section-title">What I work on</div>
+
+    <div class="bento">
+
+        <div class="tile span-4 visits">
+            <div>
+                <h3>Experience</h3>
+                <p>Contributing to Roblox experiences with gameplay programming, scripting, optimisation and game systems.</p>
+            </div>
+            <div class="big">100M+</div>
+            <div class="bars" aria-hidden="true">
+                <i style="height:22%"></i><i style="height:30%"></i><i style="height:38%"></i>
+                <i style="height:34%"></i><i style="height:52%"></i><i style="height:60%"></i>
+                <i style="height:72%"></i><i style="height:100%"></i>
+            </div>
+        </div>
+
+        <div class="tile span-2 studio">
+            <p style="margin:0">Currently at</p>
+            <div>
+                <div class="name">Azure</div>
+                <p>Game development studio</p>
+            </div>
+        </div>
+
+        <div class="tile span-3">
+            <h3>Roblox development</h3>
+            <p>Luau scripting, gameplay mechanics, server-side systems and experience development.</p>
+            <div class="mini"><span class="k">local</span> <span class="f">Remote</span> = ReplicatedStorage.Hit
+Remote.OnServerEvent:<span class="f">Connect</span>(<span class="k">function</span>(player)
+    <span class="c">-- validate on the server</span>
+<span class="k">end</span>)</div>
+        </div>
+
+        <div class="tile span-3">
+            <h3>Software development</h3>
+            <p>Swift, macOS applications, native interfaces and software experimentation.</p>
+            <div class="mini"><span class="k">struct</span> <span class="f">ContentView</span>: <span class="f">View</span> {
+    <span class="k">var</span> body: <span class="k">some</span> <span class="f">View</span> {
+        <span class="f">Text</span>(<span class="s">"Hello, macOS"</span>)
+    }
+}</div>
+        </div>
+
+        <div class="tile span-2">
+            <h3>UI &amp; design</h3>
+            <p>Interface design, visual systems, usability and interaction.</p>
+            <div class="swatches" aria-hidden="true">
+                <i style="background:#3d8bff"></i><i style="background:#8ab8ff"></i><i style="background:#1a1e29"></i><i style="background:#eceef3"></i>
+            </div>
+            <div class="radii" aria-hidden="true">
+                <i style="border-radius:4px"></i><i style="border-radius:10px"></i><i style="border-radius:50%"></i><i style="border-radius:12px 4px"></i>
+            </div>
+        </div>
+
+        <div class="tile span-4">
+            <h3>Technology</h3>
+            <p>Apple hardware, computers, operating systems and performance optimisation.</p>
+            <div class="frames" aria-hidden="true">
+                <div class="frame">before<u><b style="width:86%;background:var(--rose)"></b></u><em>32ms</em></div>
+                <div class="frame">after<u><b style="width:42%;background:var(--mint)"></b></u><em>8ms</em></div>
+            </div>
+        </div>
+
+    </div>
+
+    <section class="contact" id="contact">
+        <h2>Got a game<br>to build?</h2>
+        <a class="discord" href="https://discord.com/users/613868680996061210" target="_blank" rel="noopener">@iln0 on Discord ↗</a>
+    </section>
+</main>
+
+<footer>
+    <span>kyro. © 2026</span>
+    <span>Developer portfolio</span>
+</footer>
+
+</div>
+
+</body>
+</html>
